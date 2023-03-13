@@ -91,3 +91,4 @@ class TestQtWindow(QMainWindow):
 if __name__ == '__main__':
     application()
     print("Something New!")
+    print('cadabra')

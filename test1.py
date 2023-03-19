@@ -16,52 +16,14 @@
 #
 #     print(text)
 
-# from tkinter import *
-# from tkinter import ttk
+# pyrcc5 IconEdit.qrc -o IconEdit.py
 
-# root = Tk()
-# root.title('Testing1')
-# root.geometry("1000x500")
-#
-# tr = ttk.Treeview(root)
-# # tr['columns'] = ("Name", "Sec")
-# # tr.column("#0", width=120, minwidth=100)
-# # tr.column("Name", width=120, anchor=W)
-# # tr.column("Sec", width=20, anchor=CENTER)
-# #
-# # tr.heading('#0', text='First', anchor=W)
-# # tr.heading('Name', text='Second', anchor=W)
-# # tr.heading('Sec', text='Third', anchor=W)
-#
-# tr.insert(parent='', index="end", iid=0, text='Something1', values=("john", 2))
-# tr.insert(parent='0', index="end", iid=1, text='Something1', values=("mat", 51))
-# tr.grid()
-
-
-# FeetToMeters(root)
-# tree = ttk.Treeview(root)
-# # Inserted at the root, program chooses id:
-# tree.insert('', 'end', 'widgets', text='Widget Tour')
-#
-# # Same thing, but inserted as first child:
-# tree.insert('', 0, 'gallery', text='Applications')
-#
-# # Treeview chooses the id:
-# id = tree.insert('', 'end', text='Tutorial')
-#
-# # Inserted underneath an existing node:
-# tree.insert('widgets', 'end', text='Canvas')
-# tree.insert(id, 'end', text='Tree')
-
-
-# root.mainloop()
-
-
-from PyQt5 import QtWidgets as qw
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 # from TestQt import Ui_MainWindow as QTMainW
 import sys
+import IconEdit
 
 
 def application():
@@ -84,7 +46,13 @@ class TestQtWindow(QMainWindow):
         super().__init__()
         # self.ui = QTMainW()
         uic.loadUi('TestQt.ui', self)
+        # sf.myWidget.setStyleSheet(“image: url(picture.jpg)”)
         # self.ui.setupUi(self)
+        # print(s)
+        # s.setupUi(self)
+        editb = self.findChild(QToolButton, "B_edit")
+        print(editb)
+        editb.setStyleSheet('icon: url(edit_ico.ico)')
         self.show()
 
 

@@ -98,48 +98,25 @@
             </column>
             <item>
              <property name="text">
-              <string>1434</string>
-             </property>
-             <property name="text">
-              <string>настройка</string>
+              <string>Встроенные типы</string>
              </property>
              <item>
               <property name="text">
-               <string>5535</string>
-              </property>
-              <property name="text">
-               <string>н, обратное</string>
-              </property>
-             </item>
-            </item>
-            <item>
-             <property name="text">
-              <string>124124</string>
-             </property>
-             <property name="text">
-              <string>скачивание</string>
-             </property>
-             <item>
-              <property name="text">
-               <string>56325</string>
-              </property>
-              <property name="text">
-               <string>с</string>
+               <string>Численные типы</string>
               </property>
               <item>
                <property name="text">
-                <string>6262624</string>
-               </property>
-               <property name="text">
-                <string>с</string>
+                <string>int</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>626</string>
+                <string>float</string>
                </property>
+              </item>
+              <item>
                <property name="text">
-                <string>с</string>
+                <string>complex</string>
                </property>
               </item>
              </item>
@@ -185,38 +162,88 @@
             </column>
             <item>
              <property name="text">
-              <string>пуыаыуа</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>цфафца</string>
+              <string>Встроенные функции</string>
              </property>
              <item>
               <property name="text">
-               <string>ацфаф</string>
+               <string>abs()</string>
+              </property>
+             </item>
+            </item>
+            <item>
+             <property name="text">
+              <string>Встроенные типы</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>Булевы операторы</string>
               </property>
               <item>
                <property name="text">
-                <string>оео</string>
+                <string>and</string>
                </property>
               </item>
               <item>
                <property name="text">
-                <string>оеоео</string>
+                <string>or</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>not</string>
+               </property>
+              </item>
+             </item>
+             <item>
+              <property name="text">
+               <string>Численные типы</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>int</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>float</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>complex</string>
+               </property>
+              </item>
+             </item>
+             <item>
+              <property name="text">
+               <string>Типы последовательностей</string>
+              </property>
+              <item>
+               <property name="text">
+                <string>list</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>tuple</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>range</string>
                </property>
               </item>
              </item>
             </item>
             <item>
              <property name="text">
-              <string>оеаоаео</string>
+              <string>DataTypes</string>
              </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>н7шдлншг</string>
-             </property>
+             <item>
+              <property name="text">
+               <string>datetime</string>
+              </property>
+             </item>
             </item>
            </widget>
           </item>

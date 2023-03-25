@@ -6,9 +6,10 @@ from owlready2 import *
 # from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 import sys
-import IconEdit
+
 from ontologies_work import OntoWorker
 from main_window_handler import MainWindow
+from gui_work import GuiWorker
 
 
 def application():
@@ -23,9 +24,17 @@ def application():
 
     # onto = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1")
 
-    onto_wrkr = OntoWorker()
-    onto = onto_wrkr.get_onto()
-    print(list(onto.classes()))
+    onto_worker = OntoWorker()
+    onto = onto_worker.get_onto()
+
+    gui_worker = GuiWorker(onto)
+
+    # print(type(onto.Ontology_Root))
+    # print(str(list(onto.Ontology_Root.descendants())))
+    # for r in onto.Ontology_Root.descendants():
+    #     print(r)
+    # gen = onto.classes()
+    # print(gen.__next__())
 
     app = QApplication(sys.argv)
     window = MainWindow()

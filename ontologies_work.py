@@ -13,4 +13,5 @@ class OntoWorker:
 
     def get_onto(self, path: string = "file://C:/Users/Sinitza/Documents/AУЧЕБА/ВКРБ/Ontologys/First.owl"):
         self.onto = get_ontology(path).load()
+        # print(type(self.onto))
         return self.onto

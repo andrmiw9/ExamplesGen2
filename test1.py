@@ -18,6 +18,8 @@
 
 # pyrcc5 IconEdit.qrc -o IconEdit.py
 
+
+from owlready2 import *
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
@@ -35,6 +37,10 @@ def application():
     #
     # mwind.show()
     # sys.exit(app.exec_())
+
+    # onto = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1")
+    onto = get_ontology(r"file://C:/Users/Sinitza/Documents/AУЧЕБА/ВКРБ/Ontologys/First.owl").load()
+    print(list(onto.classes()))
 
     app = QApplication(sys.argv)
     window = TestQtWindow()

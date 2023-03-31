@@ -29,10 +29,3 @@ class GuiWorker:
             return d
         else:
             return node
-
-    # while ()
-    #     print(list(onto.Ontology_Root.subclasses()))
-    # for clss in onto.Ontology_Root.:
-    #     print(clss)
-    #     for parent in clss.
-    #         pass

@@ -11,7 +11,7 @@ class OntoWorker:
     def __init__(self):
         self.onto = None
 
-    def get_onto(self, path: string = "file://C:/Users/Sinitza/Documents/AУЧЕБА/ВКРБ/Ontologys/First.owl"):
+    def get_onto(self, path: string = "file://Ontologies/First.owl"):
         self.onto = get_ontology(path).load()
         # self.onto = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1")
         # print(type(self.onto))

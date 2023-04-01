@@ -42,7 +42,12 @@ def application():
     app = QApplication(sys.argv)
     window = MainWindow()
 
-    gui_worker.print_tree_from_graph(window.findChild(QTreeWidget))     # update left ontology
+    p = window.findChild(QTreeWidget)
+    gui_worker.print_tree_from_graph(p)     # update left ontology
+
+    print(p.findChild(QTreeWidgetItem))
+    # print(t.children())
+    # print(t.text())
 
     # t: QTreeWidget = window.findChild(QTreeWidget)
     # t.clear()

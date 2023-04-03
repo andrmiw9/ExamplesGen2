@@ -8,17 +8,27 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.ui = QTMainW()
-        uic.loadUi('TestQt.ui', self)
+        self.Tree_Language = None
+        self.Tree_Examples = None
+
+        uic.loadUi('V1Splitter.ui', self)
         # sf.myWidget.setStyleSheet(“image: url(picture.jpg)”)
         # self.ui.setupUi(self)
         # print(s)
         # s.setupUi(self)
-        self.treeWidget.itemClicked.connect(self.onItemClicked)
+
+        # print(self.Line_Find.font().setPointSize(72))
+        # font = self.Line_Find.font()  # lineedit current font
+        # font.setPointSize(18)  # change it's size
+        # self.Line_Find.setFont(font)  # set font
+
+        self.Tree_Examples.itemClicked.connect(self.on_tree_item_clicked)
+        # self.Tree_Language.itemClicked.connect(self.on_tree_item_clicked)
 
         self.show()
 
-    def onItemClicked(self):
-        item = self.treeWidget.currentItem()
+    def on_tree_item_clicked(self, Tree: QTreeWidget):
+        item = self.Tree_Examples.currentItem()
         # print(item.text(0))
         # print(item.parent().text(0))
         print(self.getParentPath(item))

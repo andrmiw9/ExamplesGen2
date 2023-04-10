@@ -7,6 +7,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      ontologyIRI="http://www.semanticweb.org/sinitza/ontologies/2023/3/PythonLanguage"
      versionIRI="http://www.semanticweb.org/sinitza/ontologies/2023/3/PythonLanguage/0.1">
+    <Prefix name="" IRI="http://www.semanticweb.org/sinitza/ontologies/2023/3/PythonLanguage"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
@@ -17,8 +18,155 @@
         <Literal>Language Ontology</Literal>
     </Annotation>
     <Declaration>
+        <Class IRI="#Compound_statements"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Language_Reference"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Ontology_Root"/>
     </Declaration>
+    <Declaration>
+        <Class IRI="#Simple_statements"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Standart_Library"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#assert"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#break"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#continue"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#del"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#for"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#global"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#if"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#import"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#match"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#nonlocal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#pass"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#raise"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#return"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#try"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#while"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#with"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#yield"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Compound_statements"/>
+        <Class IRI="#Language_Reference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Language_Reference"/>
+        <Class IRI="#Ontology_Root"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Simple_statements"/>
+        <Class IRI="#Language_Reference"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Standart_Library"/>
+        <Class IRI="#Ontology_Root"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#assert"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#break"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#continue"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#del"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#for"/>
+        <Class IRI="#Compound_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#global"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#if"/>
+        <Class IRI="#Compound_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#import"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#match"/>
+        <Class IRI="#Compound_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#nonlocal"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#pass"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#raise"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#return"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#try"/>
+        <Class IRI="#Compound_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#while"/>
+        <Class IRI="#Compound_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#with"/>
+        <Class IRI="#Compound_statements"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#yield"/>
+        <Class IRI="#Simple_statements"/>
+    </SubClassOf>
 </Ontology>
 
 

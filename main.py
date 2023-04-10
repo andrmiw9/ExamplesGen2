@@ -50,11 +50,14 @@ def application():
     # print(list(onto.properties()))
     # if onto.ExText in list(onto.properties()):
     #     print('YEEYEYEYEY')
-    testik = onto.Int.instances()[0]
-    if onto.has_ExText[testik]:
-        print(onto.ExText[testik])
-        print('EPEPPEEPEPEPEPEPp')
-    print(onto.Ontology_Root)
+
+    # testik = onto.Int.instances()[0]
+    # if onto.has_ExText[testik]:
+    #     print(onto.ExText[testik])
+    #     print('EPEPPEEPEPEPEPEPp')
+    # print(onto.Ontology_Root)
+
+    # print("MEGA TEST", testik.ExText)
     # print(onto.search_one(iri='http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Ontology_Root'))
 
     # if (prop1[0] == True):

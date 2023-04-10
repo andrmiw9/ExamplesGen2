@@ -16,12 +16,12 @@ class GuiWorker:
 
     def __init__(self, onto: owlready2.namespace.Ontology):
         self.graph = None
-        self.onto = onto
+        self.onto_examples = onto
         self.Example_Text = None
         self.build_graph_from_gui()
 
     def build_graph_from_gui(self):
-        parent = self.onto.Ontology_Root
+        parent = self.onto_examples.Ontology_Root
 
         self.graph = self.build_graph(parent)
         print(self.graph)
@@ -59,15 +59,15 @@ class GuiWorker:
         # print(t)
         # print('relevant:', self.onto.currentItem.text(0))
         # print(self.onto.search(iri=(f"{0}", t)))
-        onto_node = self.onto.search_one(iri=f"*{t}")
+        self.Example_Text.setPlainText('')
+        onto_node = self.onto_examples.search_one(iri=f"*{t}")
         if onto_node:
             if onto_node.instances():
                 instance = onto_node.instances()[0]
                 # print(instance.get_properties())
                 # testik = self.onto.onto_node.instances()[0]
-                if self.onto.has_ExText[instance]:
-                    r = self.onto.ExText[instance][0]
-                    print(r)
+                if instance.has_ExText:
+                    r = self.onto_examples.ExText[instance][0]
                     self.Example_Text.setPlainText(r)
                     # print('EPEPPEEPEPEPEPEPp')
                 # self.Example_Text = 'fwafwfawfawf'

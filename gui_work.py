@@ -17,6 +17,7 @@ class GuiWorker:
     def __init__(self, onto: owlready2.namespace.Ontology):
         self.graph = None
         self.onto = onto
+        self.Example_Text = None
         self.build_graph_from_gui()
 
     def build_graph_from_gui(self):
@@ -50,3 +51,28 @@ class GuiWorker:
             t = QTreeWidgetItem(tree_parent)
             t.setText(0, key)
             self.print_tree(t, local_graph[key])
+
+    def print_example(self, currentItem):
+        # print('TEST11TEST11')
+        t = str(currentItem.text(0)).split('.')[1]
+        # t = str(t)
+        # print(t)
+        # print('relevant:', self.onto.currentItem.text(0))
+        # print(self.onto.search(iri=(f"{0}", t)))
+        onto_node = self.onto.search_one(iri=f"*{t}")
+        if onto_node:
+            if onto_node.instances():
+                instance = onto_node.instances()[0]
+                # print(instance.get_properties())
+                # testik = self.onto.onto_node.instances()[0]
+                if self.onto.has_ExText[instance]:
+                    r = self.onto.ExText[instance][0]
+                    print(r)
+                    self.Example_Text.setPlainText(r)
+                    # print('EPEPPEEPEPEPEPEPp')
+                # self.Example_Text = 'fwafwfawfawf'
+                # print(self.Example_Text)
+            else:
+                print("No Instances!")
+
+        pass

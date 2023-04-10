@@ -27,6 +27,42 @@ def application():
     onto_worker = OntoWorker()
     onto = onto_worker.get_onto()
 
+    # print('testik:', onto.Int.instances()[0].get_properties())
+    # # print('testik:', has_ExText[onto.Int.instances()[0]])
+    # prop1 = list(onto.Int.instances()[0].get_properties())
+    #
+    # print('prop1:', prop1)
+    # for prop in onto.Int.instances()[0].get_properties():
+    #     for value in prop[onto.Int.instances()[0]]:
+    #         print(".%s == %s" % (prop.python_name, value))
+    # print('\n')
+    # # if (prop1[0][onto.Int.instances()[0]]):
+    # #     print('yep')
+    #
+    # for val in prop1:
+    #     print(type(val), val)
+    # print('\n')
+    #
+    # # print(onto.properties())
+    # for entry in onto.properties():
+    #     print(entry)
+
+    # print(list(onto.properties()))
+    # if onto.ExText in list(onto.properties()):
+    #     print('YEEYEYEYEY')
+    testik = onto.Int.instances()[0]
+    if onto.has_ExText[testik]:
+        print(onto.ExText[testik])
+        print('EPEPPEEPEPEPEPEPp')
+    print(onto.Ontology_Root)
+    # print(onto.search_one(iri='http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Ontology_Root'))
+
+    # if (prop1[0] == True):
+    #     print('yep')
+
+    # for i in onto.Int.instances():
+    # print(i)
+
     # print(type(onto.Ontology_Root))
     # print(str(list(onto.Ontology_Root.descendants())))
 
@@ -41,6 +77,9 @@ def application():
 
     app = QApplication(sys.argv)
     window = MainWindow()
+    window.Tree_Examples.itemClicked.connect(gui_worker.print_example)
+    print('ex text:', window.Example_Text)
+    gui_worker.Example_Text = window.Example_Text
 
     # p = window.findChild(QTreeWidget, 'Tree_Examples')
     gui_worker.print_tree_from_graph(window.Tree_Examples)  # update left ontology

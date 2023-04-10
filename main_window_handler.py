@@ -10,8 +10,9 @@ class MainWindow(QMainWindow):
         # self.ui = QTMainW()
         self.Tree_Language = None
         self.Tree_Examples = None
+        self.Example_Text = None
 
-        uic.loadUi('V1Splitter.ui', self)
+        uic.loadUi('V2Splitter.ui', self)
         # sf.myWidget.setStyleSheet(“image: url(picture.jpg)”)
         # self.ui.setupUi(self)
         # print(s)
@@ -22,7 +23,7 @@ class MainWindow(QMainWindow):
         # font.setPointSize(18)  # change it's size
         # self.Line_Find.setFont(font)  # set font
 
-        self.Tree_Examples.itemClicked.connect(self.on_tree_item_clicked)
+        # self.Tree_Examples.itemClicked.connect(self.on_tree_item_clicked)
         # self.Tree_Language.itemClicked.connect(self.on_tree_item_clicked)
 
         self.show()
@@ -31,19 +32,19 @@ class MainWindow(QMainWindow):
         item = self.Tree_Examples.currentItem()
         # print(item.text(0))
         # print(item.parent().text(0))
-        print(self.getParentPath(item))
+        print(self.get_path(item))
         # print('yep')
         pass
 
-    def getParentPath(self, item):
-        def getParent(item, _out):
-            if item.parent() is None:
+    def get_path(self, item):
+        def getParent(_item, _out):
+            if _item.parent() is None:
                 return _out
-            out = item.parent().text(0) + '/' + _out
+            out = _item.parent().text(0) + '/' + _out
             # print(item.parent.text(0))
             # print(item)
             # print(item.parent())
-            return getParent(item.parent(), out)
+            return getParent(_item.parent(), out)
 
         output = getParent(item, item.text(0))
         return output

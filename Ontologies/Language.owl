@@ -83,6 +83,15 @@
     <Declaration>
         <Class IRI="#yield"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="#SpecText"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#has_SpecText"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#TestLang"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="#Compound_statements"/>
         <Class IRI="#Language_Reference"/>
@@ -167,6 +176,39 @@
         <Class IRI="#yield"/>
         <Class IRI="#Simple_statements"/>
     </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#if"/>
+        <NamedIndividual IRI="#TestLang"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#SpecText"/>
+        <NamedIndividual IRI="#TestLang"/>
+        <Literal>The if statement is used for conditional execution:
+
+if_stmt ::=  &quot;if&quot; assignment_expression &quot;:&quot; suite
+             (&quot;elif&quot; assignment_expression &quot;:&quot; suite)*
+             [&quot;else&quot; &quot;:&quot; suite]</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#has_SpecText"/>
+        <NamedIndividual IRI="#TestLang"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+    </DataPropertyAssertion>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#SpecText"/>
+        <DataProperty IRI="#has_SpecText"/>
+    </SubDataPropertyOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#has_SpecText"/>
+    </FunctionalDataProperty>
+    <DataPropertyRange>
+        <DataProperty IRI="#SpecText"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#has_SpecText"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
 </Ontology>
 
 

@@ -79,6 +79,24 @@ class GuiWorker:
             else:
                 print("No Instances!")
 
-    def print_language(self):
-        print('yep')
+    def print_language(self, currentItem):
+        t = currentItem.text(0)
+        print(t)
+        # print('relevant:', self.onto.currentItem.text(0))
+        # print(self.onto.search(iri=(f"{0}", t)))
+        self.Lang_Text.setPlainText('')
+        onto_node = self.onto_lang.search_one(iri=f"*{t}")
+        if onto_node:
+            if onto_node.instances():
+                instance = onto_node.instances()[0]
+                # print(instance.get_properties())
+                # testik = self.onto.onto_node.instances()[0]
+                if instance.has_SpecText:
+                    r = self.onto_lang.SpecText[instance][0]
+                    self.Lang_Text.setPlainText(r)
+                    # print('EPEPPEEPEPEPEPEPp')
+                # self.Example_Text = 'fwafwfawfawf'
+                # print(self.Example_Text)
+            else:
+                print("No Instances!")
         pass

@@ -82,6 +82,7 @@ def application():
     app = QApplication(sys.argv)
     window = MainWindow()
     window.Tree_Examples.itemClicked.connect(gui_worker.print_example)
+    window.Tree_Language.itemClicked.connect(gui_worker.print_language)
     # window.Tree_Language.itemClicked.connect(gui_worker.print_language)
     # print('ex text:', window.Example_Text)
     gui_worker.Example_Text = window.Example_Text

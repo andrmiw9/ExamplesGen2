@@ -30,14 +30,15 @@ class GuiWorker:
         # print(self.graph_ex)
 
     def build_graph(self, node: owlready2.entity.ThingClass):
-        d = {str(node): {}}
+        node_str = str(node).split('.')[1]
+        d = {node_str: {}}
         if node.subclasses():
             for ch in node.subclasses():
                 res = self.build_graph(ch)
-                if str(node) in d:
-                    d[str(node)].update(res)
+                if node_str in d:
+                    d[node_str].update(res)
                 else:
-                    d[str(node)] = res
+                    d[node_str] = res
             return d
         else:
             return node
@@ -57,9 +58,9 @@ class GuiWorker:
 
     def print_example(self, currentItem):
         # print('TEST11TEST11')
-        t = str(currentItem.text(0)).split('.')[1]
-        # t = str(t)
-        # print(t)
+        # t = str(currentItem.text(0)).split('.')[1]
+        t = currentItem.text(0)
+        print(t)
         # print('relevant:', self.onto.currentItem.text(0))
         # print(self.onto.search(iri=(f"{0}", t)))
         self.Example_Text.setPlainText('')

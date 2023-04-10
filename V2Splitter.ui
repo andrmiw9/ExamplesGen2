@@ -238,7 +238,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextBrowser" name="Specification_Text">
+         <widget class="QTextBrowser" name="Language_Text">
           <property name="placeholderText">
            <string>Текст спецификации</string>
           </property>

@@ -11,6 +11,7 @@ class MainWindow(QMainWindow):
         self.Tree_Language = None
         self.Tree_Examples = None
         self.Example_Text = None
+        self.Language_Text = None
 
         uic.loadUi('V2Splitter.ui', self)
         # sf.myWidget.setStyleSheet(“image: url(picture.jpg)”)

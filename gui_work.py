@@ -14,17 +14,20 @@ class GuiWorker:
     #
     #
 
-    def __init__(self, onto: owlready2.namespace.Ontology):
-        self.graph = None
-        self.onto_examples = onto
+    def __init__(self, onto_left: owlready2.namespace.Ontology, onto_right: owlready2.namespace.Ontology):
+        self.graph_ex = None
+        self.graph_lang = None
+        self.onto_examples = onto_left
+        self.onto_lang = onto_right
         self.Example_Text = None
-        self.build_graph_from_gui()
+        self.Lang_Text = None
 
-    def build_graph_from_gui(self):
-        parent = self.onto_examples.Ontology_Root
+        self.graph_ex = self.build_graph_from_onto(self.onto_examples.Ontology_Root)
+        self.graph_lang = self.build_graph_from_onto(self.onto_lang.Ontology_Root)
 
-        self.graph = self.build_graph(parent)
-        print(self.graph)
+    def build_graph_from_onto(self, parent):
+        return self.build_graph(parent)
+        # print(self.graph_ex)
 
     def build_graph(self, node: owlready2.entity.ThingClass):
         d = {str(node): {}}
@@ -41,10 +44,10 @@ class GuiWorker:
 
     def print_tree_from_graph(self, node: QTreeWidget, graph: dict = None) -> None:
         if not graph:
-            graph = self.graph
+            return
         print('Graph to build:', graph)
         node.clear()
-        self.print_tree(node, self.graph)
+        self.print_tree(node, graph)
 
     def print_tree(self, tree_parent, local_graph):
         for key in local_graph.keys():
@@ -75,4 +78,6 @@ class GuiWorker:
             else:
                 print("No Instances!")
 
+    def print_language(self):
+        print('yep')
         pass

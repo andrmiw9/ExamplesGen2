@@ -13,6 +13,7 @@ class OntoWorker:
         self.onto_lang = None
 
     def get_onto_ex(self, path: string = "file://Ontologies/First.owl"):
+        # print(path)
         self.onto_ex = get_ontology(path).load()
         # self.onto = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1")
         # print(type(self.onto))

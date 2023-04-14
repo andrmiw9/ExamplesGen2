@@ -1,3 +1,4 @@
+import owlready2
 from owlready2 import *
 from PyQt5.QtWidgets import *
 
@@ -14,16 +15,27 @@ class GuiWorker:
     #
     #
 
-    def __init__(self, onto_left: owlready2.namespace.Ontology, onto_right: owlready2.namespace.Ontology):
-        self.graph_ex = None
-        self.graph_lang = None
-        self.onto_examples = onto_left
-        self.onto_lang = onto_right
-        self.Example_Text = None
-        self.Lang_Text = None
+    def __init__(self):
+        self.graph_ex: dict = None
+        self.graph_lang: dict = None
+        self.onto_examples: owlready2.namespace.Ontology = None
+        self.onto_lang: owlready2.namespace.Ontology = None
+        self.Example_Text: str = None
+        self.Lang_Text: str = None
+        # onto_right: owlready2.namespace.Ontology
 
+        # self.graph_ex = self.build_graph_from_onto(self.onto_examples.Ontology_Root)
+        # self.graph_lang = self.build_graph_from_onto(self.onto_lang.Ontology_Root)
+
+    def set_ex_onto(self, onto_ex: owlready2.namespace.Ontology):
+        self.onto_examples = onto_ex
         self.graph_ex = self.build_graph_from_onto(self.onto_examples.Ontology_Root)
+        # print(self.graph_ex)
+
+    def set_lang_onto(self, onto_lang: owlready2.namespace.Ontology):
+        self.onto_lang = onto_lang
         self.graph_lang = self.build_graph_from_onto(self.onto_lang.Ontology_Root)
+        # print(self.graph_lang)
 
     def build_graph_from_onto(self, parent):
         return self.build_graph(parent)

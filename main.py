@@ -11,6 +11,10 @@ from ontologies_work import OntoWorker
 from main_window_handler import MainWindow
 from gui_work import GuiWorker
 
+CONST_EXAMPLES: bool = False
+CONST_LANGUAGE: bool = False
+window: MainWindow = None
+
 
 def application():
     # app = QApplication(sys.argv)
@@ -23,10 +27,6 @@ def application():
     # sys.exit(app.exec_())
 
     # onto_ex = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1")
-
-    onto_worker = OntoWorker()
-    onto_ex = onto_worker.get_onto_ex()
-    onto_lang = onto_worker.get_onto_lang()
 
     # print('testik:', onto_ex.Int.instances()[0].get_properties())
     # # print('testik:', has_ExText[onto_ex.Int.instances()[0]])
@@ -75,22 +75,15 @@ def application():
     # gen = onto_ex.classes()
     # print(gen.__next__())
 
-    gui_worker = GuiWorker(onto_ex, onto_lang)
-
     # test_graph = {'First': {'Datatypes': {'Numeric types': {'Int': {'Example1': {}}, 'Float': {'Example2': {}}}}}}
 
     app = QApplication(sys.argv)
+    global window
     window = MainWindow()
-    window.Tree_Examples.itemClicked.connect(gui_worker.print_example)
-    window.Tree_Language.itemClicked.connect(gui_worker.print_language)
-    # window.Tree_Language.itemClicked.connect(gui_worker.print_language)
-    # print('ex text:', window.Example_Text)
-    gui_worker.Example_Text = window.Example_Text
-    gui_worker.Lang_Text = window.Language_Text
 
-    # p = window.findChild(QTreeWidget, 'Tree_Examples')
-    gui_worker.print_tree_from_graph(window.Tree_Examples, gui_worker.graph_ex)  # update left ontology
-    gui_worker.print_tree_from_graph(window.Tree_Language, gui_worker.graph_lang)  # update left ontology
+    window.actionOpen.triggered.connect(left_loader)
+
+    sys.exit(app.exec_())
 
     # print(p.findChild(QTreeWidgetItem))
     # print(t.children())
@@ -110,7 +103,54 @@ def application():
     # for ch in gui_graph.children():
     #     print(ch.objectName())
 
-    sys.exit(app.exec_())
+
+onto_worker = OntoWorker()
+gui_worker = GuiWorker()
+
+
+class MyDialog(QFileDialog):
+    def __init__(self, parent):
+        super(MyDialog, self).__init__(parent)
+        self.setFileMode(QFileDialog.ExistingFile)
+        self.setNameFilter("Ontology (*.owl)")
+        self.setViewMode(QFileDialog.List)
+
+    pass
+
+
+def left_loader():
+    global CONST_EXAMPLES
+    CONST_EXAMPLES = False
+    # print('loader')
+    dialog = MyDialog(window)
+
+    if dialog.exec_():
+        filename = dialog.selectedFiles()
+        print('Filenames:', filename)
+        if filename[0]:
+            gui_worker.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
+            window.Tree_Examples.itemClicked.connect(gui_worker.print_example)
+            gui_worker.Example_Text = window.Example_Text
+
+            gui_worker.print_tree_from_graph(window.Tree_Examples, gui_worker.graph_ex)  # update left ontology
+
+            CONST_EXAMPLES = True
+
+
+def startup_setup():
+    onto_lang = onto_worker.get_onto_lang()
+
+    # window.actionOpen_Right.triggered.connect(self.test)
+
+    window.Tree_Language.itemClicked.connect(gui_worker.print_language)
+
+    gui_worker.Lang_Text = window.Language_Text
+
+    # p = window.findChild(QTreeWidget, 'Tree_Examples')
+
+    gui_worker.print_tree_from_graph(window.Tree_Language, gui_worker.graph_lang)  # update left ontology
+
+    pass
 
 
 if __name__ == '__main__':

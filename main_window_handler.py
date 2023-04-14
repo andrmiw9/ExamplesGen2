@@ -23,7 +23,6 @@ class MainWindow(QMainWindow):
         # font = self.Line_Find.font()  # lineedit current font
         # font.setPointSize(18)  # change it's size
         # self.Line_Find.setFont(font)  # set font
-
         # self.Tree_Examples.itemClicked.connect(self.on_tree_item_clicked)
         # self.Tree_Language.itemClicked.connect(self.on_tree_item_clicked)
 
@@ -42,10 +41,14 @@ class MainWindow(QMainWindow):
             if _item.parent() is None:
                 return _out
             out = _item.parent().text(0) + '/' + _out
-            # print(item.parent.text(0))
+            # print(item.parent.text(e0))
             # print(item)
             # print(item.parent())
             return getParent(_item.parent(), out)
 
         output = getParent(item, item.text(0))
         return output
+
+    def test(self):
+        print('TEST WORKED')
+        pass

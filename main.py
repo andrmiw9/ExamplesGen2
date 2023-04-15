@@ -82,6 +82,7 @@ def application():
     window = MainWindow()
 
     window.actionOpen.triggered.connect(left_loader)
+    window.actionOpen_Right.triggered.connect(right_loader)
 
     sys.exit(app.exec_())
 
@@ -121,7 +122,7 @@ class MyDialog(QFileDialog):
 def left_loader():
     global CONST_EXAMPLES
     CONST_EXAMPLES = False
-    # print('loader')
+    # print('left_loader')
     dialog = MyDialog(window)
 
     if dialog.exec_():
@@ -137,19 +138,22 @@ def left_loader():
             CONST_EXAMPLES = True
 
 
-def startup_setup():
-    onto_lang = onto_worker.get_onto_lang()
+def right_loader():
+    global CONST_LANGUAGE
+    CONST_LANGUAGE = False
+    # print('right_loader')
+    dialog = MyDialog(window)
 
-    # window.actionOpen_Right.triggered.connect(self.test)
+    if dialog.exec_():
+        filename = dialog.selectedFiles()
+        print('Filenames:', filename)
+        if filename[0]:
+            gui_worker.set_lang_onto(onto_worker.get_onto_lang(filename[0]))
+            window.Tree_Language.itemClicked.connect(gui_worker.print_language)
+            gui_worker.Lang_Text = window.Language_Text
 
-    window.Tree_Language.itemClicked.connect(gui_worker.print_language)
-
-    gui_worker.Lang_Text = window.Language_Text
-
-    # p = window.findChild(QTreeWidget, 'Tree_Examples')
-
-    gui_worker.print_tree_from_graph(window.Tree_Language, gui_worker.graph_lang)  # update left ontology
-
+            gui_worker.print_tree_from_graph(window.Tree_Language, gui_worker.graph_lang)  # update left ontology
+            CONST_LANGUAGE = True
     pass
 
 

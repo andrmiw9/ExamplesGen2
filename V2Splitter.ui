@@ -163,31 +163,6 @@
             <string>Теги</string>
            </property>
           </column>
-          <item>
-           <property name="text">
-            <string>Встроенные типы</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Численные типы</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>int</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>float</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>complex</string>
-             </property>
-            </item>
-           </item>
-          </item>
          </widget>
         </item>
        </layout>
@@ -238,7 +213,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QTextBrowser" name="Language_Text">
+         <widget class="QTextEdit" name="Language_Text">
           <property name="placeholderText">
            <string>Текст спецификации</string>
           </property>
@@ -286,91 +261,6 @@
             <string notr="true">Онтология языка</string>
            </property>
           </column>
-          <item>
-           <property name="text">
-            <string>Встроенные функции</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>abs()</string>
-            </property>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>Встроенные типы</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>Булевы операторы</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>and</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>or</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>not</string>
-             </property>
-            </item>
-           </item>
-           <item>
-            <property name="text">
-             <string>Численные типы</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>int</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>float</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>complex</string>
-             </property>
-            </item>
-           </item>
-           <item>
-            <property name="text">
-             <string>Типы последовательностей</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>list</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>tuple</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>range</string>
-             </property>
-            </item>
-           </item>
-          </item>
-          <item>
-           <property name="text">
-            <string>DataTypes</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>datetime</string>
-            </property>
-           </item>
-          </item>
          </widget>
         </item>
        </layout>
@@ -407,17 +297,17 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen">
    <property name="text">
-    <string>Open Left</string>
+    <string>Открыть Примеры</string>
    </property>
   </action>
   <action name="actionOpen_Right">
    <property name="text">
-    <string>Open Right</string>
+    <string>Открыть Язык</string>
    </property>
   </action>
   <action name="actionSet1">
    <property name="text">
-    <string>Set1</string>
+    <string>Настройка 1</string>
    </property>
   </action>
  </widget>

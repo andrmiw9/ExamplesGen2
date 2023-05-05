@@ -70,50 +70,9 @@ class GuiWorker:
 
     def print_example(self, currentItem):
         self.print_universal(currentItem, self.onto_examples, self.Example_Text, 0)
-        # # print('TEST11TEST11')
-        # # t = str(currentItem.text(0)).split('.')[1]
-        # t = currentItem.text(0)
-        # print(t)
-        # # print('relevant:', self.onto.currentItem.text(0))
-        # # print(self.onto.search(iri=(f"{0}", t)))
-        # self.Example_Text.setPlainText('')
-        # onto_node = self.onto_examples.search_one(iri=f"*{t}")
-        # if onto_node:
-        #     if onto_node.instances():
-        #         instance = onto_node.instances()[0]
-        #         # print(instance.get_properties())
-        #         # testik = self.onto.onto_node.instances()[0]
-        #         if instance.has_ExText:
-        #             r = self.onto_examples.ExText[instance][0]
-        #             self.Example_Text.setPlainText(r)
-        #             # print('EPEPPEEPEPEPEPEPp')
-        #         # self.Example_Text = 'fwafwfawfawf'
-        #         # print(self.Example_Text)
-        #     else:
-        #         print("No Instances!")
 
     def print_language(self, currentItem):
         self.print_universal(currentItem, self.onto_lang, self.Lang_Text, 1)
-        # t = currentItem.text(0)
-        # print(t)
-        # # print('relevant:', self.onto.currentItem.text(0))
-        # # print(self.onto.search(iri=(f"{0}", t)))
-        # self.Lang_Text.setPlainText('')
-        # onto_node = self.onto_lang.search_one(iri=f"*{t}")
-        # if onto_node:
-        #     if onto_node.instances():
-        #         instance = onto_node.instances()[0]
-        #         # print(instance.get_properties())
-        #         # testik = self.onto.onto_node.instances()[0]
-        #         if instance.has_SpecText:
-        #             r = self.onto_lang.SpecText[instance][0]
-        #             self.Lang_Text.setPlainText(r)
-        #             # print('EPEPPEEPEPEPEPEPp')
-        #         # self.Example_Text = 'fwafwfawfawf'
-        #         # print(self.Example_Text)
-        #     else:
-        #         print("No Instances!")
-        pass
 
     def print_universal(self, currentItem, ontology, gui_node, switcher):
         t = currentItem.text(0)

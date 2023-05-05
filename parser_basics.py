@@ -11,7 +11,7 @@ def individuals_list_from_link(link) -> list:
     # print(r.encoding)
     responce.encoding = 'utf-8'
     # print(r.encoding)
-    print(f'Status code: {responce.status_code}, link: {link}')
+    # print(f'Status code: {responce.status_code}, link: {link}')
     # print(r.text)
     soup = bs(responce.text, "html.parser")
     # print(soup.original_encoding)
@@ -37,7 +37,7 @@ def lookforward2_h4(entry):
 def add_to_graph(local_graph: dict, ul):  # t = entry or h4
     alist = ul.findChildren('a')
     for tagA in alist:
-        print(tagA['href'], tagA.text)
+        # print(tagA['href'], tagA.text)
         # local_graph3[tagA.text] = tagA['href']
 
         example_list = individuals_list_from_link(tagA['href'])
@@ -55,10 +55,10 @@ class Parser:
         # print(r.encoding)
         r.encoding = 'utf-8'
         # print(r.encoding)
-        print('Status code:', r.status_code)
+        # print('Status code:', r.status_code)
         # print(r.text)
         soup = bs(r.text, "html.parser")
-        print(soup.original_encoding)
+        # print(soup.original_encoding)
         # print(soup)
 
         self.result = soup.find_all('h3')
@@ -67,24 +67,25 @@ class Parser:
         self.build_graph()
 
     def build_graph(self):
+        print('Parsing in progress...\n')
         for entry in self.result:
             if entry.text == 'Summary':
                 break
 
-            print(entry)
+            # print(entry)
             local_graph1 = {}
             self.graph[entry.text] = local_graph1
 
             if lookforward2_h4(entry):  # если среди 2 тегов снизу есть h4
                 local_graph2 = {}
                 local_graph1['Next_Level'] = local_graph2
-                print(self.graph)
+                # print(self.graph)
                 # print('YEEEEP')
                 condition = True
                 t = entry.findNextSibling('h4')
                 while condition:  # следующий тег это h4
                     h4 = t
-                    print(h4)
+                    # print(h4)
                     local_graph3 = {}
                     local_graph2[h4.text] = local_graph3
                     # print(h4.next_sibling)
@@ -116,12 +117,12 @@ class Parser:
                 add_to_graph(local_graph1, ul)
                 pass
 
-        print(self.graph)
-        print(self.graph['Python Operators'])
-
-        print('\n')
-        print(self.graph)
-        print('\n')
+        # print(self.graph)
+        # print(self.graph['Python Operators'])
+        #
+        # print('\n')
+        # print(self.graph)
+        # print('\n')
 
         self.print_graph_keys()
 

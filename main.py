@@ -10,6 +10,8 @@ import sys
 from ontologies_work import OntoWorker
 from main_window_handler import MainWindow
 from gui_work import GuiWorker
+# from parser_basics import Parser
+from parse_worker import ParseWorker
 
 CONST_EXAMPLES: bool = False
 CONST_LANGUAGE: bool = False
@@ -107,6 +109,7 @@ def application():
 
 onto_worker = OntoWorker()
 gui_worker = GuiWorker()
+parse_worker = ParseWorker()
 
 
 class MyDialog(QFileDialog):

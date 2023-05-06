@@ -36,11 +36,24 @@ class OntoWorker:
                             # print(1)
                             for key_4 in parsr.graph[key_top][key_2][key_3].keys():  # ex: Python Addition
                                 k4_cls = types.new_class(key_4, (self.onto_ex[key_3],))
+                                instance = self.onto_ex[key_4]()
+                                # print(parsr.graph[key_top][key_2][key_3])
+                                instance.ExText = parsr.graph[key_top][key_2][key_3][key_4]
+                                instance.has_ExText = True
+
                                 print('\t\t', key_4)
                     else:
-                        if key_2 == key_top:
-                            key_2 += '*'
+
                         k2_cls = types.new_class(key_2, (self.onto_ex[key_top],))
+                        instance = self.onto_ex[key_2]()
+                        instance.ExText = parsr.graph[key_top][key_2]
+                        instance.has_ExText = True
+
+                        # if instansss.has_SpecText:
+                        #     r = ontology.SpecText[instansss][0]
+                        #     gui_node.setPlainText(r)
+                        # print(instance.name)
+                        # print(instance.iri)
                         print('\t', key_2)
 
         print('\n\n')

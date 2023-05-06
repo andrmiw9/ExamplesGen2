@@ -34,17 +34,20 @@ def lookforward2_h4(entry):
         return True
 
 
-def add_to_graph(local_graph: dict, ul):  # t = entry or h4
+def add_to_graph(local_graph: dict, ul, parent_text=''):  # t = entry or h4
     alist = ul.findChildren('a')
     for tagA in alist:
         # print(tagA['href'], tagA.text)
         # local_graph3[tagA.text] = tagA['href']
+        text = tagA.text
+        if text == parent_text:  # если 2 уровня в графе совпадают, то меняем имя
+            text = text + '*'
 
         example_list = individuals_list_from_link(tagA['href'])
         if example_list:
-            local_graph[tagA.text] = example_list[0]
+            local_graph[text] = example_list[0]
         else:
-            local_graph[tagA.text] = tagA['href']
+            local_graph[text] = tagA['href']
     pass
 
 
@@ -114,7 +117,7 @@ class Parser:
                 continue
             else:
                 ul = entry.findNextSibling('ul')
-                add_to_graph(local_graph1, ul)
+                add_to_graph(local_graph1, ul, entry.text)
                 pass
 
         # print(self.graph)

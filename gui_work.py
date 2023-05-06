@@ -11,7 +11,7 @@ class GuiWorker:
     #
     # TODO:
     #  1) refactor methods using decorators
-    #  2)
+    #  2) Advanced Topics need fix
     #
     #
 

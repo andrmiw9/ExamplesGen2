@@ -8,10 +8,10 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         # self.ui = QTMainW()
-        self.Tree_Language = None
-        self.Tree_Examples = None
-        self.Example_Text = None
-        self.Language_Text = None
+        # self.Tree_Language = None
+        # self.Tree_Examples = None
+        # self.Example_Text = None
+        # self.Language_Text = None
 
         uic.loadUi('V2Splitter.ui', self)
         # sf.myWidget.setStyleSheet(“image: url(picture.jpg)”)

@@ -10,12 +10,13 @@ import sys
 from ontologies_work import OntoWorker
 from main_window_handler import MainWindow
 from gui_work import GuiWorker
-# from parser_basics import Parser
-from parse_worker import ParseWorker
 
 CONST_EXAMPLES: bool = False
 CONST_LANGUAGE: bool = False
 window: MainWindow = None
+
+onto_worker = OntoWorker()
+gui_worker = GuiWorker()
 
 
 def application():
@@ -107,11 +108,6 @@ def application():
     #     print(ch.objectName())
 
 
-onto_worker = OntoWorker()
-gui_worker = GuiWorker()
-parse_worker = ParseWorker()
-
-
 class MyDialog(QFileDialog):
     def __init__(self, parent):
         super(MyDialog, self).__init__(parent)
@@ -132,6 +128,7 @@ def left_loader():
         filename = dialog.selectedFiles()
         print('Filenames:', filename)
         if filename[0]:
+            # getting ontology from file and setting in gui worker
             gui_worker.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
             window.Tree_Examples.itemClicked.connect(gui_worker.print_example)
             gui_worker.Example_Text = window.Example_Text

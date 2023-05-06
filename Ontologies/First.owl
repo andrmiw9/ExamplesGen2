@@ -73,19 +73,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Basics -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Basics">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Ontology_Root"/>
-        <rdfs:label xml:lang="ru">Basics</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Console_Operations -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Console_Operations">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Basics"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Python_Basics"/>
         <rdfs:label xml:lang="ru">Console Operations</rdfs:label>
     </owl:Class>
     
@@ -94,7 +85,7 @@
     <!-- http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Datatypes -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Datatypes">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Basics"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Python_Basics"/>
         <rdfs:label xml:lang="ru">Datatypes</rdfs:label>
     </owl:Class>
     
@@ -113,6 +104,15 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Ontology_Root">
         <owl:disjointWith rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#sib1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Python_Basics -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Python_Basics">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#Ontology_Root"/>
+        <rdfs:label xml:lang="ru">Python Basics</rdfs:label>
     </owl:Class>
     
 

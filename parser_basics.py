@@ -5,9 +5,14 @@ import re
 
 # print('hello ')
 def individuals_list_from_link(link) -> list:
-    if link == '/python-print-123-n/':
-        link = 'https://pythonexamples.org/python-print-123-n/'  # fix for 1 <a> которая неправильно написана на сайте
-    responce = requests.get(link)
+    # if link == '/python-print-123-n/':
+    #     link = 'https://pythonexamples.org/python-print-123-n/'  # fix for 1 <a> которая неправильно написана на сайте
+    try:
+        responce = requests.get(link)
+    except Exception:
+        return ['']
+        # return ['Error with link occured']
+
     # print(r.encoding)
     responce.encoding = 'utf-8'
     # print(r.encoding)
@@ -45,6 +50,8 @@ def add_to_graph(local_graph: dict, ul, parent_text=''):  # t = entry or h4
 
         example_list = individuals_list_from_link(tagA['href'])
         if example_list:
+            # example_list[0] = example_list[0].replace('\t', '   ')
+            example_list[0] = example_list[0].expandtabs(tabsize=5)
             local_graph[text] = example_list[0]
         else:
             local_graph[text] = tagA['href']
@@ -52,22 +59,23 @@ def add_to_graph(local_graph: dict, ul, parent_text=''):  # t = entry or h4
 
 
 class Parser:
-    def __init__(self):
-        URL_TEMPLATE = "https://pythonexamples.org/python-basic-examples    /"
-        r = requests.get(URL_TEMPLATE)
-        # print(r.encoding)
-        r.encoding = 'utf-8'
-        # print(r.encoding)
-        # print('Status code:', r.status_code)
-        # print(r.text)
-        soup = bs(r.text, "html.parser")
-        # print(soup.original_encoding)
-        # print(soup)
+    def __init__(self, parse_basics: bool = False):
+        if parse_basics:
+            URL_TEMPLATE = "https://pythonexamples.org/python-basic-examples    /"
+            r = requests.get(URL_TEMPLATE)
+            # print(r.encoding)
+            r.encoding = 'utf-8'
+            # print(r.encoding)
+            # print('Status code:', r.status_code)
+            # print(r.text)
+            soup = bs(r.text, "html.parser")
+            # print(soup.original_encoding)
+            # print(soup)
 
-        self.result = soup.find_all('h3')
-        self.graph = {}
+            self.result = soup.find_all('h3')
+            self.graph = {}
 
-        self.build_graph()
+            self.build_graph()
 
     def build_graph(self):
         print('Parsing in progress...\n')
@@ -120,7 +128,7 @@ class Parser:
                 add_to_graph(local_graph1, ul, entry.text)
                 pass
 
-        # print(self.graph)
+        print(self.graph)
         # print(self.graph['Python Operators'])
         #
         # print('\n')

@@ -10,13 +10,17 @@ import sys
 from ontologies_work import OntoWorker
 from main_window_handler import MainWindow
 from gui_work import GuiWorker
+from parser_basics import Parser
 
 CONST_EXAMPLES: bool = False
 CONST_LANGUAGE: bool = False
-window: MainWindow = None
+gui: MainWindow = None
 
 onto_worker = OntoWorker()
 gui_worker = GuiWorker()
+
+
+# prsr = Parser(parse_basics=True)
 
 
 def application():
@@ -81,11 +85,13 @@ def application():
     # test_graph = {'First': {'Datatypes': {'Numeric types': {'Int': {'Example1': {}}, 'Float': {'Example2': {}}}}}}
 
     app = QApplication(sys.argv)
-    global window
-    window = MainWindow()
+    global gui
+    gui = MainWindow()
 
-    window.actionOpen.triggered.connect(left_loader)
-    window.actionOpen_Right.triggered.connect(right_loader)
+    gui.actionOpen.triggered.connect(left_loader)  # Открыть примеры
+    gui.actionOpen_Right.triggered.connect(right_loader)  # Открыть спецификацию
+    # window.actionSaveEx.triggered.connect()
+    # window.actionExtendEx.triggered.connect(extend_ontology_json)  # расширить онтологию примеров JSON'ом
 
     sys.exit(app.exec_())
 
@@ -118,22 +124,46 @@ class MyDialog(QFileDialog):
     pass
 
 
-def left_loader():
+def extend_ontology_json():
     global CONST_EXAMPLES
-    CONST_EXAMPLES = False
-    # print('left_loader')
-    dialog = MyDialog(window)
+    if not CONST_EXAMPLES:
+        print('Ошибка: сначала загрузите примеры!')
+        return
+
+    print('extender')
+    dialog = MyDialog(gui)
 
     if dialog.exec_():
         filename = dialog.selectedFiles()
         print('Filenames:', filename)
         if filename[0]:
             # getting ontology from file and setting in gui worker
-            gui_worker.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
-            window.Tree_Examples.itemClicked.connect(gui_worker.print_example)
-            gui_worker.Example_Text = window.Example_Text
+            gui.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
+            gui.Tree_Examples.itemClicked.connect(gui.print_example)
+            gui.Example_Text = gui.Example_Text
 
-            gui_worker.print_tree_from_graph(window.Tree_Examples, gui_worker.graph_ex)  # update left ontology
+            gui.print_tree_from_graph(gui.Tree_Examples, gui.graph_ex)  # update left ontology
+
+            CONST_EXAMPLES = True
+    pass
+
+
+def left_loader():
+    global CONST_EXAMPLES
+    CONST_EXAMPLES = False
+    # print('left_loader')-
+    dialog = MyDialog(gui)
+
+    if dialog.exec_():
+        filename = dialog.selectedFiles()
+        print('Filenames:', filename)
+        if filename[0]:
+            # getting ontology from file and setting in gui worker
+            gui.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
+            gui.Tree_Examples.itemClicked.connect(gui.print_example)
+            gui.Example_Text = gui.Example_Text
+
+            gui.print_tree_from_graph(gui.Tree_Examples, gui.graph_ex)  # update left ontology
 
             CONST_EXAMPLES = True
 
@@ -142,17 +172,17 @@ def right_loader():
     global CONST_LANGUAGE
     CONST_LANGUAGE = False
     # print('right_loader')
-    dialog = MyDialog(window)
+    dialog = MyDialog(gui)
 
     if dialog.exec_():
         filename = dialog.selectedFiles()
         print('Filenames:', filename)
         if filename[0]:
-            gui_worker.set_lang_onto(onto_worker.get_onto_lang(filename[0]))
-            window.Tree_Language.itemClicked.connect(gui_worker.print_language)
-            gui_worker.Lang_Text = window.Language_Text
+            gui.set_lang_onto(onto_worker.get_onto_lang(filename[0]))
+            gui.Tree_Language.itemClicked.connect(gui.print_language)
+            gui.Lang_Text = gui.Language_Text
 
-            gui_worker.print_tree_from_graph(window.Tree_Language, gui_worker.graph_lang)  # update left ontology
+            gui.print_tree_from_graph(gui.Tree_Language, gui.graph_lang)  # update left ontology
             CONST_LANGUAGE = True
     pass
 

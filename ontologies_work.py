@@ -19,7 +19,7 @@ class OntoWorker:
         self.onto_lang = None
 
     def update_ontoex_from_parse(self):  # extend ontology from parse result
-        parsr = Parser()
+        parsr = Parser(parse_basics=True)
 
         # parsr.graph['Python Classes and Objects']
         print(parsr.graph)

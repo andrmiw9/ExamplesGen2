@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import re
+import json
 
 
 # print('hello ')
@@ -30,7 +31,7 @@ def individuals_list_from_link(link) -> list:
     return l
 
 
-def lookforward2_h4(entry):
+def look_forward2_h4(entry):
     res = entry.next_sibling.next_sibling
     if res and res.name == 'h4':
         return True
@@ -58,6 +59,17 @@ def add_to_graph(local_graph: dict, ul, parent_text=''):  # t = entry or h4
     pass
 
 
+def print_graph_keys(mnoshestvo, tabs=0):  # recursive f to print all keys of nested dictionaries
+    if type(mnoshestvo) == dict:
+        # print('Dict')
+        # print(mnoshestvo.keys())
+        for k in mnoshestvo.keys():
+            print(tabs * '\t' + k)
+            print_graph_keys(mnoshestvo[k], tabs + 1)
+    else:
+        pass
+
+
 class Parser:
     def __init__(self, parse_basics: bool = False):
         if parse_basics:
@@ -77,6 +89,9 @@ class Parser:
 
             self.build_graph()
 
+            with open('result.json', 'w') as fp:
+                json.dump(self.graph, fp, indent=4)
+
     def build_graph(self):
         print('Parsing in progress...\n')
         for entry in self.result:
@@ -87,10 +102,10 @@ class Parser:
             local_graph1 = {}
             self.graph[entry.text] = local_graph1
 
-            if lookforward2_h4(entry):  # если среди 2 тегов снизу есть h4
-                local_graph2 = {}
-                local_graph1['Next_Level'] = local_graph2
-                # print(self.graph)
+            if look_forward2_h4(entry):  # если среди 2 тегов снизу есть h4
+                # local_graph2 = {}
+                # local_graph1['Next_Level'] = local_graph2
+                print(self.graph)
                 # print('YEEEEP')
                 condition = True
                 t = entry.findNextSibling('h4')
@@ -98,7 +113,7 @@ class Parser:
                     h4 = t
                     # print(h4)
                     local_graph3 = {}
-                    local_graph2[h4.text] = local_graph3
+                    local_graph1[h4.text] = local_graph3
                     # print(h4.next_sibling)
                     # print(h4.next_sibling.next_sibling)
                     # print(h4.next_sibling.next_sibling.next_sibling)
@@ -128,14 +143,14 @@ class Parser:
                 add_to_graph(local_graph1, ul, entry.text)
                 pass
 
-        print(self.graph)
+        # print(self.graph)
         # print(self.graph['Python Operators'])
         #
         # print('\n')
         # print(self.graph)
         # print('\n')
 
-        self.print_graph_keys()
+        print_graph_keys(self.graph)
 
     # class Example:
     #     def __init__(self, name: str, example_text: str = '', description: str = ''):
@@ -144,24 +159,24 @@ class Parser:
     #         self.description = description
     #         pass
 
-    def print_graph_keys(self):
-        for key_top in self.graph.keys():  # ex: Python datatypes or Python Operators
-            print(key_top)
-            for key_2 in self.graph[key_top].keys():  # ex: Python int or Next level
-
-                if key_2 == 'Next_Level':
-                    # print('\t')
-                    for key_3 in self.graph[key_top][key_2].keys():  # ex: Python Arithmetic Operators
-                        print('\t', key_3)
-                        # print(1)
-                        for key_4 in self.graph[key_top][key_2][key_3].keys():  # ex: Python Addition
-                            print('\t\t', key_4)
-                else:
-                    print('\t', key_2)
+    # def print_graph_keys_old(self):
+    #     for key_top in self.graph.keys():  # ex: Python datatypes or Python Operators
+    #         print(key_top)
+    #         for key_2 in self.graph[key_top].keys():  # ex: Python int or Next level
+    #
+    #             if key_2 == 'Next_Level':
+    #                 # print('\t')
+    #                 for key_3 in self.graph[key_top][key_2].keys():  # ex: Python Arithmetic Operators
+    #                     print('\t', key_3)
+    #                     # print(1)
+    #                     for key_4 in self.graph[key_top][key_2][key_3].keys():  # ex: Python Addition
+    #                         print('\t\t', key_4)
+    #             else:
+    #                 print('\t', key_2)
 
 
 if __name__ == '__main__':
-    p = Parser()
+    p = Parser(parse_basics=True)
 
 # PARSE 2
 # for key_top in graph.keys():  # ex: Python datatypes or Python Operators

@@ -283,8 +283,8 @@
      <string>Файл</string>
     </property>
     <addaction name="actionOpen"/>
-    <addaction name="actionExtendEx"/>
     <addaction name="actionOpen_Right"/>
+    <addaction name="actionExtendEx"/>
     <addaction name="separator"/>
     <addaction name="action_SaveEx"/>
    </widget>
@@ -320,7 +320,7 @@
   </action>
   <action name="actionExtendEx">
    <property name="text">
-    <string>Расширить Примеры JSON</string>
+    <string>Расширить Примеры JSON'ом</string>
    </property>
   </action>
  </widget>

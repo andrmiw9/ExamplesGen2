@@ -6,10 +6,10 @@ from owlready2 import *
 # from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 import sys
+import json
 
 from ontologies_work import OntoWorker
 from main_window_handler import MainWindow
-from gui_work import GuiWorker
 from parser_basics import Parser
 
 CONST_EXAMPLES: bool = False
@@ -17,10 +17,6 @@ CONST_LANGUAGE: bool = False
 gui: MainWindow = None
 
 onto_worker = OntoWorker()
-gui_worker = GuiWorker()
-
-
-# prsr = Parser(parse_basics=True)
 
 
 def application():
@@ -91,7 +87,7 @@ def application():
     gui.actionOpen.triggered.connect(left_loader)  # Открыть примеры
     gui.actionOpen_Right.triggered.connect(right_loader)  # Открыть спецификацию
     # window.actionSaveEx.triggered.connect()
-    # window.actionExtendEx.triggered.connect(extend_ontology_json)  # расширить онтологию примеров JSON'ом
+    gui.actionExtendEx.triggered.connect(extend_ontology_json)  # расширить онтологию примеров JSON'ом
 
     sys.exit(app.exec_())
 
@@ -121,8 +117,6 @@ class MyDialog(QFileDialog):
         self.setNameFilter("Ontology (*.owl)")
         self.setViewMode(QFileDialog.List)
 
-    pass
-
 
 def extend_ontology_json():
     global CONST_EXAMPLES
@@ -132,19 +126,25 @@ def extend_ontology_json():
 
     print('extender')
     dialog = MyDialog(gui)
+    dialog.setNameFilter('JSON (*.json)')  # modify filter for JSON
 
     if dialog.exec_():
         filename = dialog.selectedFiles()
         print('Filenames:', filename)
         if filename[0]:
-            # getting ontology from file and setting in gui worker
-            gui.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
-            gui.Tree_Examples.itemClicked.connect(gui.print_example)
-            gui.Example_Text = gui.Example_Text
+            with open(filename[0]) as json_file:
+                data = json.load(json_file)
+                print('Data from file:', data)
+                onto_worker.update_examples_from_graph(data)
 
-            gui.print_tree_from_graph(gui.Tree_Examples, gui.graph_ex)  # update left ontology
+                gui.update_ex_graph()
 
-            CONST_EXAMPLES = True
+                gui.print_tree_from_graph(gui.Tree_Examples, gui.graph_ex)  # update left
+            # gui.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
+            # gui.Tree_Examples.itemClicked.connect(gui.print_example)
+            # gui.Example_Text = gui.Example_Text
+            #
+            # gui.print_tree_from_graph(gui.Tree_Examples, gui.graph_ex)  # update left ontology
     pass
 
 
@@ -161,7 +161,6 @@ def left_loader():
             # getting ontology from file and setting in gui worker
             gui.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
             gui.Tree_Examples.itemClicked.connect(gui.print_example)
-            gui.Example_Text = gui.Example_Text
 
             gui.print_tree_from_graph(gui.Tree_Examples, gui.graph_ex)  # update left ontology
 
@@ -180,7 +179,6 @@ def right_loader():
         if filename[0]:
             gui.set_lang_onto(onto_worker.get_onto_lang(filename[0]))
             gui.Tree_Language.itemClicked.connect(gui.print_language)
-            gui.Lang_Text = gui.Language_Text
 
             gui.print_tree_from_graph(gui.Tree_Language, gui.graph_lang)  # update left ontology
             CONST_LANGUAGE = True

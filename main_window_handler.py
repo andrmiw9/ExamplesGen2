@@ -1,8 +1,47 @@
+# noinspection PyUnresolvedReferences
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QTreeWidget, QTreeWidgetItem
 from PyQt5 import QtWidgets
 import IconEdit
 from owlready2 import *
+
+
+def print_universal(currentItem, ontology, gui_node, switcher):
+    t = currentItem.text(0)
+    print(t)
+    # print('relevant:', self.onto.currentItem.text(0))
+    # print(self.onto.search(iri=(f"{0}", t)))
+    gui_node.setPlainText('')
+    onto_node = ontology.search_one(iri=f"*{t}")
+    if onto_node:
+        if onto_node.instances():
+            # for i in onto_node.instances():
+            #     print(i)
+
+            instansss = onto_node.instances()[0]
+            # print(instansss.get_properties())
+            # testik = self.onto.onto_node.instances()[0]
+
+            if switcher == 1:
+                if instansss.has_SpecText:
+                    r = ontology.SpecText[instansss][0]
+                    gui_node.setPlainText(r)
+            else:
+                if instansss.has_ExText:
+                    r = ontology.ExText[instansss][0]
+                    gui_node.setPlainText(r)
+
+            # print('TYPE:', type(instansss))
+
+            # if instansss['has_SpecText']:
+            #     r = ontology['SpecText'][instansss][0]
+            #     gui_node.setPlainText(r)
+
+        # print('EPEPPEEPEPEPEPEPp')
+        # self.Example_Text = 'fwafwfawfawf'
+        # print(self.Example_Text)
+    else:
+        print("No Instances!")
 
 
 class MainWindow(QMainWindow):
@@ -14,7 +53,10 @@ class MainWindow(QMainWindow):
     # TODO:
     #  1) refactor methods using decorators
     #  2) Advanced Topics need fix
-    #
+    #  3) Add filters for file extensions when opening files
+    #  4) Integrate 2 methods of loading files into one or smth
+    #  5) Move Dialog classes from main to another file
+    #  6) When writing graph, try replace underlines with whitespaces
     #
     def __init__(self):
         super().__init__()
@@ -82,6 +124,9 @@ class MainWindow(QMainWindow):
         self.graph_lang = self.build_graph_from_onto(self.onto_lang.Ontology_Root)
         # print(self.graph_lang)
 
+    def update_ex_graph(self):
+        self.graph_ex = self.build_graph_from_onto(self.onto_examples.Ontology_Root)
+
     def build_graph_from_onto(self, parent):
         return self.build_graph(parent)
         # print(self.graph_ex)
@@ -100,9 +145,7 @@ class MainWindow(QMainWindow):
         else:
             return node
 
-    def print_tree_from_graph(self, node: QTreeWidget, graph: dict = None) -> None:
-        if not graph:
-            return
+    def print_tree_from_graph(self, node: QTreeWidget, graph: dict) -> None:
         print('Graph to build:', graph)
         node.clear()
         self.print_tree(node, graph)
@@ -114,47 +157,10 @@ class MainWindow(QMainWindow):
             self.print_tree(t, local_graph[key])
 
     def print_example(self, currentItem):
-        self.print_universal(currentItem, self.onto_examples, self.Example_Text, 0)
+        print_universal(currentItem, self.onto_examples, self.Example_Text, 0)
 
     def print_language(self, currentItem):
-        self.print_universal(currentItem, self.onto_lang, self.Lang_Text, 1)
-
-    def print_universal(self, currentItem, ontology, gui_node, switcher):
-        t = currentItem.text(0)
-        print(t)
-        # print('relevant:', self.onto.currentItem.text(0))
-        # print(self.onto.search(iri=(f"{0}", t)))
-        gui_node.setPlainText('')
-        onto_node = ontology.search_one(iri=f"*{t}")
-        if onto_node:
-            if onto_node.instances():
-                # for i in onto_node.instances():
-                #     print(i)
-
-                instansss = onto_node.instances()[0]
-                # print(instansss.get_properties())
-                # testik = self.onto.onto_node.instances()[0]
-
-                if switcher == 1:
-                    if instansss.has_SpecText:
-                        r = ontology.SpecText[instansss][0]
-                        gui_node.setPlainText(r)
-                else:
-                    if instansss.has_ExText:
-                        r = ontology.ExText[instansss][0]
-                        gui_node.setPlainText(r)
-
-                # print('TYPE:', type(instansss))
-
-                # if instansss['has_SpecText']:
-                #     r = ontology['SpecText'][instansss][0]
-                #     gui_node.setPlainText(r)
-
-            # print('EPEPPEEPEPEPEPEPp')
-            # self.Example_Text = 'fwafwfawfawf'
-            # print(self.Example_Text)
-        else:
-            print("No Instances!")
+        print_universal(currentItem, self.onto_lang, self.Lang_Text, 1)
 
     pass
 

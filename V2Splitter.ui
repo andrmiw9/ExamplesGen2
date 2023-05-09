@@ -287,6 +287,7 @@
     <addaction name="actionExtendEx"/>
     <addaction name="separator"/>
     <addaction name="action_SaveEx"/>
+    <addaction name="action_SaveAs"/>
    </widget>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
@@ -315,12 +316,17 @@
   </action>
   <action name="action_SaveEx">
    <property name="text">
-    <string>Сохранить Примеры</string>
+    <string>Сохранить примеры</string>
    </property>
   </action>
   <action name="actionExtendEx">
    <property name="text">
     <string>Расширить Примеры JSON'ом</string>
+   </property>
+  </action>
+  <action name="action_SaveAs">
+   <property name="text">
+    <string>Сохранить примеры как...</string>
    </property>
   </action>
  </widget>

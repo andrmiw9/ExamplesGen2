@@ -14,6 +14,14 @@ class OntoWorker:
         self.onto_ex = None
         self.onto_lang = None
 
+    def save_onto_ex(self, custom_file=None):
+        if custom_file is None:
+            self.onto_ex.save()
+        else:
+            print(f'Custom save {custom_file}')
+            self.onto_ex.save(file=custom_file)
+            pass
+
     def update_examples_from_graph(self, mnoshestvo, parent: str = 'Python_Basics') -> bool:
         # print('Update examples from graph in work')
         # with self.onto_ex:
@@ -118,6 +126,17 @@ class OntoWorker:
 
     def get_onto_ex(self, path: string = "file://Ontologies/First.owl"):
         # print(path)
+        # path = path.removesuffix('First.owl')
+        folder = path[:path.rfind('/') + 1]
+        print(folder)
+        onto_path.append(folder)
+        # get_ontology()
+        print(onto_path)
+
+        # print(path)
+
+        # self.onto_ex = get_ontology(path).load()
+        # self.onto_ex = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1").load()
         self.onto_ex = get_ontology(path).load()
         # self.onto = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1")
         # print(type(self.onto))
@@ -125,6 +144,10 @@ class OntoWorker:
         return self.onto_ex
 
     def get_onto_lang(self, path: string = "file://Ontologies/Language.owl"):
+        folder = path[:path.rfind('/') + 1]
+        print(folder)
+        onto_path.append(folder)
+
         self.onto_lang = get_ontology(path).load()
         # self.onto = get_ontology("http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonLanguage")
         return self.onto_lang

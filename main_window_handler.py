@@ -63,6 +63,8 @@ class MainWindow(QMainWindow):
 
         # self.ui = QTMainW()
 
+        self.action_SaveAs = None
+        self.action_SaveEx = None
         self.Language_Text = None
         self.Tree_Language = None
         self.Example_Text = None

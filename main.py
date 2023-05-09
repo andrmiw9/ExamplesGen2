@@ -86,7 +86,8 @@ def application():
 
     gui.actionOpen.triggered.connect(left_loader)  # Открыть примеры
     gui.actionOpen_Right.triggered.connect(right_loader)  # Открыть спецификацию
-    # window.actionSaveEx.triggered.connect()
+    gui.action_SaveEx.triggered.connect(save_onto_ex)
+    gui.action_SaveAs.triggered.connect(save_onto_ex_as)
     gui.actionExtendEx.triggered.connect(extend_ontology_json)  # расширить онтологию примеров JSON'ом
 
     sys.exit(app.exec_())
@@ -108,6 +109,30 @@ def application():
     # print(t.findChild(QTreeWidget))
     # for ch in gui_graph.children():
     #     print(ch.objectName())
+
+
+def save_onto_ex():
+    print('save')
+    if CONST_EXAMPLES:
+        onto_worker.save_onto_ex()
+    else:
+        print('Сначала загрузите онтологию примеров, чтобы сохранять в неё же')
+
+
+def save_onto_ex_as():
+    print('save as')
+    if CONST_EXAMPLES:
+        filename, _ = QFileDialog.getSaveFileName(gui, "Save File", ".", "Ontology (*.owl);;All Files (*)")
+        if filename:
+            onto_worker.save_onto_ex(custom_file=filename)
+            # with open(filename, 'w') as file:
+            #     file.write("Welcome to GeeksCoders.com")
+
+        # name = QFileDialog.getSaveFileName(self, 'Save File')
+        # file = open(name, 'w')
+        # text = self.textEdit.toPlainText()
+        # file.write(text)
+        # file.close()
 
 
 class MyDialog(QFileDialog):

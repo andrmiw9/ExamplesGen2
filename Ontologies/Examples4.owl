@@ -560,14 +560,14 @@ print(string)</ExText>
 
 <Python_Convert_String_to_Int rdf:about="#python_convert_string_to_int1">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
   <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#take a string
 a = '125'
 print('Input', a, type(a), sep='\n')
 
 #convert string to int
 output = int(a)
-print('\nOutput', output, type(output), sep='\n')</ExText>
-  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+print('\nOutputs', output, type(output), sep='\n')</ExText>
 </Python_Convert_String_to_Int>
 
 <Python_Addition rdf:about="#python_addition1">

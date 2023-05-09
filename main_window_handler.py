@@ -1,7 +1,10 @@
 # noinspection PyUnresolvedReferences
 from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow, QTreeWidget, QTreeWidgetItem
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtWidgets import QDialog, QDialogButtonBox, QMainWindow, QMessageBox, QTreeWidget, QTreeWidgetItem
 from PyQt5 import QtWidgets
+from PyQt5 import QtGui
+
 import IconEdit
 from owlready2 import *
 
@@ -11,7 +14,7 @@ def print_universal(currentItem, ontology, gui_node, switcher):
     print(t)
     # print('relevant:', self.onto.currentItem.text(0))
     # print(self.onto.search(iri=(f"{0}", t)))
-    gui_node.setPlainText('')
+    gui_node.setPlainText('')  # обнуление текста
     onto_node = ontology.search_one(iri=f"*{t}")
     if onto_node:
         if onto_node.instances():
@@ -24,12 +27,12 @@ def print_universal(currentItem, ontology, gui_node, switcher):
 
             if switcher == 1:
                 if instansss.has_SpecText:
-                    r = ontology.SpecText[instansss][0]
-                    gui_node.setPlainText(r)
+                    # r = ontology.SpecText[instansss][0]
+                    gui_node.setPlainText(instansss.SpecText)
             else:
                 if instansss.has_ExText:
-                    r = ontology.ExText[instansss][0]
-                    gui_node.setPlainText(r)
+                    # r = ontology.ExText[instansss][0]
+                    gui_node.setPlainText(instansss.ExText)
 
             # print('TYPE:', type(instansss))
 
@@ -58,6 +61,7 @@ class MainWindow(QMainWindow):
     #  5) Move Dialog classes from main to another file
     #  6) When writing graph, try replace underlines with whitespaces
     #  7) Use alertbox or smth instead of console, which user dont see
+    #  8) May need to redone print_example calling from main since its dif-t there already
     #
     def __init__(self):
         super().__init__()
@@ -77,8 +81,9 @@ class MainWindow(QMainWindow):
         self.graph_lang: dict = None
         self.onto_examples: owlready2.namespace.Ontology = None
         self.onto_lang: owlready2.namespace.Ontology = None
-        self.Example_Text: str = None
         self.Lang_Text: str = None
+        self.start_print: bool = False
+        self.last_cur_item = None
         uic.loadUi('V2Splitter.ui', self)
 
         # self.Example_Text.setHtml("""print(c)</code></pre> <a class="runonline" target="_blank"
@@ -159,13 +164,86 @@ class MainWindow(QMainWindow):
             t.setText(0, key)
             self.print_tree(t, local_graph[key])
 
+    def save_element_to_ontoex(self, item, new_example: str):
+        t = item.text(0)
+        print(t)
+        # print('relevant:', self.onto.currentItem.text(0))
+        # print(self.onto.search(iri=(f"{0}", t)))
+        onto_node = self.onto_examples.search_one(iri=f"*{t}")
+        if onto_node and onto_node.instances():
+            instansss = onto_node.instances()[0]
+            if instansss.has_ExText:
+                print(instansss.ExText)
+                print(new_example)
+                instansss.ExText = new_example
+                self.onto_examples.save()
+                # r = self.onto_examples.ExText[instansss][0]
+        # self.onto_examples.ExText[instansss]
+
+        # print('TYPE:', type(instansss))
+
+        # if instansss['has_SpecText']:
+        #     r = ontology['SpecText'][instansss][0]
+        #     gui_node.setPlainText(r)
+
+        # print('EPEPPEEPEPEPEPEPp')
+        # self.Example_Text = 'fwafwfawfawf'
+        # print(self.Example_Text)
+        else:
+            print("Error: No Instances to save to!")
+
     def print_example(self, currentItem):
+        # self.text_ch_counter = 0
+        # self.text_ch_counter = 2
+        if currentItem == self.last_cur_item:  # fix для cancel
+            return
+
+        if self.start_print:  # если были изменения
+            msg = QMessageBox()
+            msg.setIcon(QMessageBox.Warning)
+            msg.setText("This is a message box")
+            msg.setInformativeText("This is additional information")
+            msg.setWindowTitle("MessageBox demo")
+
+            msg.setStandardButtons(QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
+
+            # msg.buttonClicked.connect(lambda x: print(x))
+
+            button = msg.exec_()
+
+            if button == QMessageBox.Save:
+                self.save_element_to_ontoex(self.last_cur_item, self.Example_Text.toPlainText())
+                self.last_cur_item.setBackground(0, QtGui.QBrush(QtGui.QColor('#9bff9d')))
+            elif button == QMessageBox.Discard:
+                self.last_cur_item.setBackground(0, QtGui.QBrush(QtGui.QColor(255, 255, 255, 0)))
+            else:  # cancel
+                # self.ite
+                # print(currentItem.isSelected())
+                currentItem.setSelected(False)
+                self.last_cur_item.setSelected(True)
+                return
+
+        self.start_print = True  # fix для change_text()
+        # print(currentItem)
+        # print(type(currentItem))
+        self.last_cur_item = currentItem  # do not move up or down
+        # currentItem.setForeground(0, QtGui.QBrush(QtGui.QColor("#123456")))
         print_universal(currentItem, self.onto_examples, self.Example_Text, 0)
+        self.start_print = False
+        # print('coutner after print:')
+
+    def change_text_example(self):
+        if not self.start_print:
+            print('test')
+            self.last_cur_item.setBackground(0, QBrush(QColor('#fac831')))
+            self.start_print = True
+
+        # if self.text_ch_counter >= 2:
+        # self.text_ch_counter += 1
+        # print(self.text_ch_counter)
 
     def print_language(self, currentItem):
         print_universal(currentItem, self.onto_lang, self.Lang_Text, 1)
-
-    pass
 
     # def on_tree_item_clicked(self, Tree: QTreeWidget):
     #     item = self.Tree_Examples.currentItem()

@@ -1,5 +1,5 @@
 # Andrey "andrmiw9" Markin 2023
-
+from PyQt5.QtGui import QKeySequence
 # pyrcc5 IconEdit.qrc -o IconEdit.py
 
 from owlready2 import *
@@ -86,10 +86,12 @@ def application():
 
     gui.actionOpen.triggered.connect(left_loader)  # Открыть примеры
     gui.actionOpen_Right.triggered.connect(right_loader)  # Открыть спецификацию
+    gui.action_SaveEx.setShortcut(QKeySequence("Ctrl+S"))
     gui.action_SaveEx.triggered.connect(save_onto_ex)
     gui.action_SaveAs.triggered.connect(save_onto_ex_as)
     gui.actionExtendEx.triggered.connect(extend_ontology_json)  # расширить онтологию примеров JSON'ом
-
+    # or:
+    # self.MyInput.textChanged[str].connect(self.doSomething)
     sys.exit(app.exec_())
 
     # print(p.findChild(QTreeWidgetItem))
@@ -187,6 +189,7 @@ def left_loader():
             # getting ontology from file and setting in gui worker
             gui.set_ex_onto(onto_worker.get_onto_ex(filename[0]))
             gui.Tree_Examples.itemClicked.connect(gui.print_example)
+            gui.Example_Text.textChanged.connect(gui.change_text_example)
 
             gui.print_tree_from_graph(gui.Tree_Examples, gui.graph_ex)  # update left ontology
 

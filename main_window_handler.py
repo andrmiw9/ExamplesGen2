@@ -57,6 +57,7 @@ class MainWindow(QMainWindow):
     #  4) Integrate 2 methods of loading files into one or smth
     #  5) Move Dialog classes from main to another file
     #  6) When writing graph, try replace underlines with whitespaces
+    #  7) Use alertbox or smth instead of console, which user dont see
     #
     def __init__(self):
         super().__init__()

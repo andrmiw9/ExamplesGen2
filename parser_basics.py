@@ -40,14 +40,21 @@ def look_forward2_h4(entry):
         return True
 
 
+def key_validator(text: str) -> str:
+    text = text.replace(' ', '_')  # fix for ontology
+    return re.sub(r'[^a-zA-Z0-9_]', '', text)
+
+
 def add_to_graph(local_graph: dict, ul, parent_text=''):  # t = entry or h4
     alist = ul.findChildren('a')
     for tagA in alist:
-        # print(tagA['href'], tagA.text)
+        print(tagA['href'], tagA.text)
         # local_graph3[tagA.text] = tagA['href']
         text = tagA.text
+        # text = text.replace(' ', '_')  # fix for ontology
+        text = key_validator(text)
         if text == parent_text:  # если 2 уровня в графе совпадают, то меняем имя
-            text = text + '*'
+            text = text + '_'
 
         example_list = individuals_list_from_link(tagA['href'])
         if example_list:
@@ -66,14 +73,12 @@ def print_graph_keys(mnoshestvo, tabs=0):  # recursive f to print all keys of ne
         for k in mnoshestvo.keys():
             print(tabs * '\t' + k)
             print_graph_keys(mnoshestvo[k], tabs + 1)
-    else:
-        pass
 
 
 class Parser:
     def __init__(self, parse_basics: bool = False):
         if parse_basics:
-            URL_TEMPLATE = "https://pythonexamples.org/python-basic-examples    /"
+            URL_TEMPLATE = "https://pythonexamples.org/python-basic-examples/"
             r = requests.get(URL_TEMPLATE)
             # print(r.encoding)
             r.encoding = 'utf-8'
@@ -89,7 +94,7 @@ class Parser:
 
             self.build_graph()
 
-            with open('result.json', 'w') as fp:
+            with open('parse_result.json', 'w') as fp:
                 json.dump(self.graph, fp, indent=4)
 
     def build_graph(self):
@@ -100,7 +105,7 @@ class Parser:
 
             # print(entry)
             local_graph1 = {}
-            self.graph[entry.text] = local_graph1
+            self.graph[key_validator(entry.text)] = local_graph1
 
             if look_forward2_h4(entry):  # если среди 2 тегов снизу есть h4
                 # local_graph2 = {}
@@ -113,7 +118,7 @@ class Parser:
                     h4 = t
                     # print(h4)
                     local_graph3 = {}
-                    local_graph1[h4.text] = local_graph3
+                    local_graph1[key_validator(h4.text)] = local_graph3
                     # print(h4.next_sibling)
                     # print(h4.next_sibling.next_sibling)
                     # print(h4.next_sibling.next_sibling.next_sibling)
@@ -140,7 +145,7 @@ class Parser:
                 continue
             else:
                 ul = entry.findNextSibling('ul')
-                add_to_graph(local_graph1, ul, entry.text)
+                add_to_graph(local_graph1, ul, key_validator(entry.text))
                 pass
 
         # print(self.graph)

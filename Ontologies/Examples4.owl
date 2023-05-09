@@ -1,0 +1,1092 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1"
+         xmlns="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1">
+  <owl:versionIRI rdf:resource="http://www.semanticweb.org/sinitza/ontologies/2023/1/PythonExamples1/0.1"/>
+  <rdfs:comment>Онтология примеров на языке Python</rdfs:comment>
+</owl:Ontology>
+
+<owl:DatatypeProperty rdf:about="#ExText">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:subPropertyOf rdf:resource="#has_ExText"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#has_ExText">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Ontology_Root">
+  <owl:disjointWith rdf:resource="#sib1"/>
+</owl:Class>
+
+<owl:Class rdf:about="#sib1"/>
+
+<owl:Class rdf:about="#Python_Basics">
+  <rdfs:subClassOf rdf:resource="#Ontology_Root"/>
+  <rdfs:label xml:lang="ru">Python Basics</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Datatypes">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_int">
+  <rdfs:subClassOf rdf:resource="#Python_Datatypes"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_float">
+  <rdfs:subClassOf rdf:resource="#Python_Datatypes"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_complex">
+  <rdfs:subClassOf rdf:resource="#Python_Datatypes"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_bytes">
+  <rdfs:subClassOf rdf:resource="#Python_Datatypes"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_string">
+  <rdfs:subClassOf rdf:resource="#Python_Datatypes"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Console_Operations">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Print_to_Console_Output">
+  <rdfs:subClassOf rdf:resource="#Console_Operations"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Read_String_from_Console">
+  <rdfs:subClassOf rdf:resource="#Console_Operations"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Read_Number_from_Console">
+  <rdfs:subClassOf rdf:resource="#Console_Operations"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Conditional_Statements">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_If_Example">
+  <rdfs:subClassOf rdf:resource="#Conditional_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_If_Else_Example">
+  <rdfs:subClassOf rdf:resource="#Conditional_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Elif_Example">
+  <rdfs:subClassOf rdf:resource="#Conditional_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_if_and">
+  <rdfs:subClassOf rdf:resource="#Conditional_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_if_or">
+  <rdfs:subClassOf rdf:resource="#Conditional_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_if_not">
+  <rdfs:subClassOf rdf:resource="#Conditional_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Looping_Statements">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_For_Loop">
+  <rdfs:subClassOf rdf:resource="#Python_Looping_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_for_i_in_range">
+  <rdfs:subClassOf rdf:resource="#Python_Looping_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Range">
+  <rdfs:subClassOf rdf:resource="#Python_Looping_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_While_Loop">
+  <rdfs:subClassOf rdf:resource="#Python_Looping_Statements"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Enumeration">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Enum_Example">
+  <rdfs:subClassOf rdf:resource="#Python_Enumeration"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Type_Conversion">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Convert_Int_to_Float">
+  <rdfs:subClassOf rdf:resource="#Python_Type_Conversion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Convert_Int_to_Complex_Number">
+  <rdfs:subClassOf rdf:resource="#Python_Type_Conversion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Convert_Int_to_String">
+  <rdfs:subClassOf rdf:resource="#Python_Type_Conversion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Convert_Bytes_to_String">
+  <rdfs:subClassOf rdf:resource="#Python_Type_Conversion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Convert_String_to_Int">
+  <rdfs:subClassOf rdf:resource="#Python_Type_Conversion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Operators">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Arithmetic_Operators">
+  <rdfs:subClassOf rdf:resource="#Python_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Addition">
+  <rdfs:subClassOf rdf:resource="#Python_Arithmetic_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Subtraction">
+  <rdfs:subClassOf rdf:resource="#Python_Arithmetic_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Multiplication">
+  <rdfs:subClassOf rdf:resource="#Python_Arithmetic_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Division">
+  <rdfs:subClassOf rdf:resource="#Python_Arithmetic_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Comparison_Operators">
+  <rdfs:subClassOf rdf:resource="#Python_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Equal_to">
+  <rdfs:subClassOf rdf:resource="#Python_Comparison_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Not_Equal_to">
+  <rdfs:subClassOf rdf:resource="#Python_Comparison_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Less_than">
+  <rdfs:subClassOf rdf:resource="#Python_Comparison_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Greater_than">
+  <rdfs:subClassOf rdf:resource="#Python_Comparison_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Less_than_or_Equal_to">
+  <rdfs:subClassOf rdf:resource="#Python_Comparison_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Greater_than_or_Equal_to">
+  <rdfs:subClassOf rdf:resource="#Python_Comparison_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Logical_Operators">
+  <rdfs:subClassOf rdf:resource="#Python_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_logical_and_operator">
+  <rdfs:subClassOf rdf:resource="#Python_Logical_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_logical_or_operator">
+  <rdfs:subClassOf rdf:resource="#Python_Logical_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_logical_not_operator">
+  <rdfs:subClassOf rdf:resource="#Python_Logical_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Identity_Operators">
+  <rdfs:subClassOf rdf:resource="#Python_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_is_Operator">
+  <rdfs:subClassOf rdf:resource="#Python_Identity_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_is_not_Operator">
+  <rdfs:subClassOf rdf:resource="#Python_Identity_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Bitwise_Operators">
+  <rdfs:subClassOf rdf:resource="#Python_Operators"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Classes_and_Objects">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Classes_and_Objects_">
+  <rdfs:subClassOf rdf:resource="#Python_Classes_and_Objects"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python___init___function">
+  <rdfs:subClassOf rdf:resource="#Python_Classes_and_Objects"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Delete_Specific_Attribute_from_Object">
+  <rdfs:subClassOf rdf:resource="#Python_Classes_and_Objects"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Check_if_Object_has_Specific_Attribute">
+  <rdfs:subClassOf rdf:resource="#Python_Classes_and_Objects"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Keywords">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Pass_Statement">
+  <rdfs:subClassOf rdf:resource="#Python_Keywords"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Check_if_the_given_String_is_a_Python_Keyword">
+  <rdfs:subClassOf rdf:resource="#Python_Keywords"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Get_the_list_of_all_Python_Keywords_programmatically">
+  <rdfs:subClassOf rdf:resource="#Python_Keywords"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_General_Examples">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Add_Two_Numbers">
+  <rdfs:subClassOf rdf:resource="#Python_General_Examples"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Generate_a_Random_Number">
+  <rdfs:subClassOf rdf:resource="#Python_General_Examples"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Print_until_N">
+  <rdfs:subClassOf rdf:resource="#Python_General_Examples"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Factorial_Program">
+  <rdfs:subClassOf rdf:resource="#Python_General_Examples"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Fibonacci_Series_in_Python_using_For_Loop">
+  <rdfs:subClassOf rdf:resource="#Python_General_Examples"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Fibonacci_Series_in_Python_using_Recursion">
+  <rdfs:subClassOf rdf:resource="#Python_General_Examples"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Reverse_a_Number_in_Python">
+  <rdfs:subClassOf rdf:resource="#Python_General_Examples"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Functions">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Inner_Functions">
+  <rdfs:subClassOf rdf:resource="#Python_Functions"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Return_Function_from_Function">
+  <rdfs:subClassOf rdf:resource="#Python_Functions"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__Return_Tuple_from_Function">
+  <rdfs:subClassOf rdf:resource="#Python_Functions"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__List_of_Functions">
+  <rdfs:subClassOf rdf:resource="#Python_Functions"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python_Advanced_Topics">
+  <rdfs:subClassOf rdf:resource="#Python_Basics"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Python__py_to_exe">
+  <rdfs:subClassOf rdf:resource="#Python_Advanced_Topics"/>
+</owl:Class>
+
+<rdf:Description rdf:about="#OWLNamedIndividual_e91979a1_5fa1_479e_b390_093624ad927c">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <rdfs:label xml:lang="ru">Testik</rdfs:label>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 10
+print(x)</ExText>
+</rdf:Description>
+
+<Python_int rdf:about="#python_int1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 20
+y = 45
+
+print(x)
+print(y)</ExText>
+</Python_int>
+
+<Python_float rdf:about="#python_float1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 20.85669842
+y = -0.0000000008566945
+print(x)
+print(y)</ExText>
+</Python_float>
+
+<Python_complex rdf:about="#python_complex1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cn = complex(5,6)
+print(cn)
+
+cn = 5 + 6j
+print(cn)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_complex>
+
+<Python_bytes rdf:about="#python_bytes1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bytesObj = b'52s3a6'
+
+for byte in bytesObj:
+    print(byte)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_bytes>
+
+<Python_string rdf:about="#python_string1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">greeting = 'hello world!'
+print(type(greeting))</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_string>
+
+<Python__Print_to_Console_Output rdf:about="#python__print_to_console_output1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">print('Hello World')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Print_to_Console_Output>
+
+<Python__Read_String_from_Console rdf:about="#python__read_string_from_console1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#read string from user
+firstName = input('Enter your first name: ')
+
+print('Hello',firstName)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Read_String_from_Console>
+
+<Python__Read_Number_from_Console rdf:about="#python__read_number_from_console1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#read integer from user
+n1 = int(input('Enter a number: '))
+n2 = int(input('Enter another number: '))
+
+print('The sum of two numbers is:', n1+n2)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Read_Number_from_Console>
+
+<Python_If_Example rdf:about="#python_if_example1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 2
+b = 5
+
+if a&lt;b:
+    print(a, 'is less than', b)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_If_Example>
+
+<Python_If_Else_Example rdf:about="#python_if_else_example1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 2
+b = 4
+
+if a&lt;b:
+     print(a, 'is less than', b)
+else:
+     print(a, 'is not less than', b)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_If_Else_Example>
+
+<Python_Elif_Example rdf:about="#python_elif_example1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 6
+b = 4
+
+if a&lt;b:
+    print(a, 'is less than', b)
+elif a&gt;b:
+    print(a, 'is greater than', b)
+else:
+    print(a, 'equals', b)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Elif_Example>
+
+<Python_if_and rdf:about="#python_if_and1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 5
+b = 2
+
+#nested if
+if a==5:
+     if b&gt;0:
+          print('a is 5 and',b,'is greater than zero.')
+          
+#or you can combine the conditions as
+if a==5 and b&gt;0:
+     print('a is 5 and',b,'is greater than zero.')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_if_and>
+
+<Python_if_or rdf:about="#python_if_or1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">today = 'Saturday'
+
+if today=='Sunday' or today=='Saturday':
+     print('Today is off. Rest at home.')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_if_or>
+
+<Python_if_not rdf:about="#python_if_not1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = False
+
+if not a:
+     print('a is false.')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_if_not>
+
+<Python_For_Loop rdf:about="#python_for_loop1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">for i in range(25,29):
+     print(i)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_For_Loop>
+
+<Python_for_i_in_range rdf:about="#python_for_i_in_range1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">for i in range(5):
+    print(i)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_for_i_in_range>
+
+<Python_Range rdf:about="#python_range1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">for r in range(5):
+    print(r)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Range>
+
+<Python_While_Loop rdf:about="#python_while_loop1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">n = 4
+i = 1
+while i &lt;= n:
+     print(i)
+     i+=1</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_While_Loop>
+
+<Python_Enum_Example rdf:about="#python_enum_example1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">myList = ['apple', 'banana', 'cherry']
+
+for index, item in enumerate(myList):
+    print(index, item)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Enum_Example>
+
+<Python_Convert_Int_to_Float rdf:about="#python_convert_int_to_float1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#take an integer
+a = 5
+print('Intput', a, type(a), sep='\n')
+
+#convert integer to float
+output = float(a)
+print('\nOutput', output, type(output), sep='\n')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Convert_Int_to_Float>
+
+<Python_Convert_Int_to_Complex_Number rdf:about="#python_convert_int_to_complex_number1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://pythonexamples.org/python-convert-int-to-complex/</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Convert_Int_to_Complex_Number>
+
+<Python_Convert_Int_to_String rdf:about="#python_convert_int_to_string1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#take an int
+a = 5
+print('Input', a, type(a), sep='\n')
+
+#convert int to string
+output = str(a)
+print('\nOutput', output, type(output), sep='\n')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Convert_Int_to_String>
+
+<Python_Convert_Bytes_to_String rdf:about="#python_convert_bytes_to_string1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bytesObj = b'52s3a6'
+string = bytesObj.decode('utf-8')
+print(string)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Convert_Bytes_to_String>
+
+<Python_Convert_String_to_Int rdf:about="#python_convert_string_to_int1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#take a string
+a = '125'
+print('Input', a, type(a), sep='\n')
+
+#convert string to int
+output = int(a)
+print('\nOutput', output, type(output), sep='\n')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Convert_String_to_Int>
+
+<Python_Addition rdf:about="#python_addition1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 10
+b = 12
+
+c = a + b
+
+print(c)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Addition>
+
+<Python_Subtraction rdf:about="#python_subtraction1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 20
+b = 12
+
+result = a - b
+
+print(result)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Subtraction>
+
+<Python_Multiplication rdf:about="#python_multiplication1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 10
+b = 12
+
+result = a * b
+
+print(result)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Multiplication>
+
+<Python_Division rdf:about="#python_division1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a, b = 7, 3
+result = a//b
+print(result)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Division>
+
+<Python_Equal_to rdf:about="#python_equal_to1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 10
+b = 12
+c = 12
+
+print(a == b)
+print(b == c)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Equal_to>
+
+<Python_Not_Equal_to rdf:about="#python_not_equal_to1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 10
+b = 12
+c = 12
+
+print(a != b)
+print(b != c)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Not_Equal_to>
+
+<Python_Less_than rdf:about="#python_less_than1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 5
+y = 12
+result = x &lt; y
+print(result) #True
+
+x = 8
+y = 7
+result = x &lt; y
+print(result) #False</ExText>
+</Python_Less_than>
+
+<Python_Greater_than rdf:about="#python_greater_than1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 8
+y = 7
+result = x &gt; y
+print(result) #True
+
+x = 5
+y = 12
+result = x &gt; y
+print(result) #False</ExText>
+</Python_Greater_than>
+
+<Python_Less_than_or_Equal_to rdf:about="#python_less_than_or_equal_to1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 5
+y = 12
+result = x &lt;= y
+print(result) #True
+
+x = 8
+y = 8
+result = x &lt;= y
+print(result) #True
+
+x = 78
+y = 8
+result = x &lt;= y
+print(result) #False</ExText>
+</Python_Less_than_or_Equal_to>
+
+<Python_Greater_than_or_Equal_to rdf:about="#python_greater_than_or_equal_to1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 57
+y = 12
+result = x &gt;= y
+print(result) #True
+
+x = 8
+y = 8
+result = x &gt;= y
+print(result) #True
+
+x = 78
+y = 89
+result = x &gt;= y
+print(result) #False</ExText>
+</Python_Greater_than_or_Equal_to>
+
+<Python_logical_and_operator rdf:about="#python_logical_and_operator1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#True and True
+a = True
+b = True
+
+c = a and b
+print(a,'and',b,'is:',c)
+
+#True and False
+a = True
+b = False
+
+c = a and b
+print(a,'and',b,'is:',c)
+
+#False and True
+a = False
+b = True
+
+c = a and b
+print(a,'and',b,'is:',c)
+
+#False and False
+a = False
+b = False
+
+c = a and b
+print(a,'and',b,'is:',c)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_logical_and_operator>
+
+<Python_logical_or_operator rdf:about="#python_logical_or_operator1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#True or True
+a = True
+b = True
+
+c = a or b
+print(a,'or',b,'is:',c)
+
+#True or False
+a = True
+b = False
+
+c = a or b
+print(a,'or',b,'is:',c)
+
+#False or True
+a = False
+b = True
+
+c = a or b
+print(a,'or',b,'is:',c)
+
+#False or False
+a = False
+b = False
+
+c = a or b
+print(a,'or',b,'is:',c)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_logical_or_operator>
+
+<Python_logical_not_operator rdf:about="#python_logical_not_operator1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#not True
+a = True
+c = not a
+print('not',a,'is:',c)
+
+#not False
+a = False
+c = not a
+print('not',a,'is:',c)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_logical_not_operator>
+
+<Python_is_Operator rdf:about="#python_is_operator1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = [5, 8]
+b = [5, 8]
+c = a
+
+if a is b:
+     print('a is b')
+else:
+     print('a is not b')
+
+if a is c:
+     print('a is c')
+else:
+     print('a is not c')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_is_Operator>
+
+<Python_is_not_Operator rdf:about="#python_is_not_operator1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = [5, 8]
+b = [5, 8]
+c = a
+
+if a is not b:
+     print('a is not b')
+else:
+     print('a is b')
+
+if a is not c:
+     print('a is not c')
+else:
+     print('a is c')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_is_not_Operator>
+
+<Python_Classes_and_Objects_ rdf:about="#python_classes_and_objects_1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">class Laptop:
+     name = 'My Laptop'
+     processor = 'Intel Core'
+     
+     @staticmethod
+     def start():
+          print('Laptop is starting..')
+          
+     @staticmethod
+     def restart(self):
+          print('Laptop is restarting')
+          
+     def details(self):
+          print('My laptop name is:', self.name)
+          print('It has',self.processor,'processor.')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Classes_and_Objects_>
+
+<Python___init___function rdf:about="#python___init___function1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">class Laptop:
+     
+     def __init__(self, name, processor, hdd, ram, cost):
+          self.name = name
+          self.processor = processor
+          self.hdd = hdd
+          self.ram = ram
+          self.cost = cost
+          
+     def details(self):
+          print('The details of the laptop are:')
+          print('Name         :', self.name)
+          print('Processor    :', self.processor)
+          print('HDD Capacity :', self.hdd)
+          print('RAM          :', self.ram)
+          print('Cost($)      :', self.cost)
+          
+#create object
+laptop1 = Laptop('Dell Alienware', 'Intel Core i7', 512, 8, 2500.00)
+
+print(laptop1.name)
+print(laptop1.processor)
+
+laptop1.details()</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python___init___function>
+
+<Python__Delete_Specific_Attribute_from_Object rdf:about="#python__delete_specific_attribute_from_object1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">class A:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+A1 = A(2, 3)
+
+print('Before deleting attribute from object A1')
+result = hasattr(A1, 'x')
+print(f'Does A1 has x? {result}')
+result = hasattr(A1, 'y')
+print(f'Does A1 has y? {result}')
+
+#delete the attribute x
+delattr(A1, 'x')
+print('\nAfter deleting attribute from object A1')
+result = hasattr(A1, 'x')
+print(f'Does A1 has x? {result}')
+result = hasattr(A1, 'y')
+print(f'Does A1 has y? {result}')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Delete_Specific_Attribute_from_Object>
+
+<Python__Check_if_Object_has_Specific_Attribute rdf:about="#python__check_if_object_has_specific_attribute1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">class A:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+A1 = A(2, 3)
+
+result = hasattr(A1, 'x')
+print(f'Does A1 has x? {result}')
+result = hasattr(A1, 'z')
+print(f'Does A1 has z? {result}')</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Check_if_Object_has_Specific_Attribute>
+
+<Python_Pass_Statement rdf:about="#python_pass_statement1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://pythonexamples.org/python-pass/</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python_Pass_Statement>
+
+<Check_if_the_given_String_is_a_Python_Keyword rdf:about="#check_if_the_given_string_is_a_python_keyword1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">import keyword
+
+if __name__ == '__main__':
+     #read string from user
+     s = input("Enter a string: ")
+     #check if the string is a keyword
+     iskey = keyword.iskeyword(s)
+     print('Is',s,'a keyword:',iskey)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Check_if_the_given_String_is_a_Python_Keyword>
+
+<Get_the_list_of_all_Python_Keywords_programmatically rdf:about="#get_the_list_of_all_python_keywords_programmatically1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">import keyword
+
+if __name__ == '__main__':
+     #get all keywords
+     keywords = keyword.kwlist
+     #print the keywords
+     for key in keywords:
+          print(key)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Get_the_list_of_all_Python_Keywords_programmatically>
+
+<Python__Add_Two_Numbers rdf:about="#python__add_two_numbers1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">a = 1
+b = 6
+
+# Add two integer numbers
+sum = a + b
+
+# print the sum to console
+print(sum)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Add_Two_Numbers>
+
+<Python__Generate_a_Random_Number rdf:about="#python__generate_a_random_number1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">import random
+
+randomnumber = random.randint(10, 152)
+print(randomnumber)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Generate_a_Random_Number>
+
+<Python__Print_until_N rdf:about="#python__print_until_n1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string"></ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Print_until_N>
+
+<Python__Factorial_Program rdf:about="#python__factorial_program1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">def factorial(n):
+     result = 1
+     for i in range(1,n+1):
+          result = result*i
+     return result
+
+n = int(input('Enter a number: '))
+result = factorial(n)
+print(n,'! = ',result,sep="")</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Factorial_Program>
+
+<Fibonacci_Series_in_Python_using_For_Loop rdf:about="#fibonacci_series_in_python_using_for_loop1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">N = int(input("Number of elements in Fibonacci Series, N, (N&gt;=2) : "))
+
+#initialize the list with starting elements: 0, 1
+fibonacciSeries = [0,1]
+
+if N&gt;2:
+     for i in range(2, N):
+          #next elment in series = sum of its previous two numbers
+          nextElement = fibonacciSeries[i-1] + fibonacciSeries[i-2]
+          #append the element to the series
+          fibonacciSeries.append(nextElement)
+
+print(fibonacciSeries)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Fibonacci_Series_in_Python_using_For_Loop>
+
+<Fibonacci_Series_in_Python_using_Recursion rdf:about="#fibonacci_series_in_python_using_recursion1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">def fibonacci(n):
+     if n&lt;=1:
+          return n
+     else:
+          return(fibonacci(n-1) + fibonacci(n-2))
+
+n = int(input('Enter a number, N, N&gt;=2 : '))
+
+fibo_series = []
+
+for i in range(0,n):
+     fibo_series.append(fibonacci(i))
+     
+print(fibo_series)</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Fibonacci_Series_in_Python_using_Recursion>
+
+<Reverse_a_Number_in_Python rdf:about="#reverse_a_number_in_python1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">try:
+     n = int(input('Enter a number : '))
+     reversed = int(str(n)[::-1])
+     print(reversed)
+except ValueError:
+     print('Given input is not a number.')</ExText>
+</Reverse_a_Number_in_Python>
+
+<Python__Inner_Functions rdf:about="#python__inner_functions1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">def function():
+    print('Inside function.')
+
+    def innerFunction1():
+        print('Inner function 1.')
+
+    def innerFunction2():
+        print('Inner function 2.')
+
+    innerFunction1()
+    innerFunction2()
+
+function()</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Inner_Functions>
+
+<Python__Return_Function_from_Function rdf:about="#python__return_function_from_function1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">def function1():
+    return function2
+
+def function2():
+    print('Function 2')
+
+x = function1()
+x()</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Return_Function_from_Function>
+
+<Python__Return_Tuple_from_Function rdf:about="#python__return_tuple_from_function1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">def myFunction():
+    return (1, 'Ram')
+
+tuple1 = myFunction()
+
+print(tuple1)
+print(type(tuple1))</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__Return_Tuple_from_Function>
+
+<Python__List_of_Functions rdf:about="#python__list_of_functions1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">def function1():
+    print('Function 1')
+
+def function2():
+    print('Function 2')
+
+myList = [function1, function2]</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__List_of_Functions>
+
+<Python__py_to_exe rdf:about="#python__py_to_exe1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://pythonexamples.org/python-py-to-exe/</ExText>
+  <has_ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</has_ExText>
+</Python__py_to_exe>
+
+
+</rdf:RDF>

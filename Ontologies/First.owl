@@ -32,10 +32,6 @@
   <rdfs:label xml:lang="ru">Python Basics</rdfs:label>
 </owl:Class>
 
-<rdf:Description rdf:about="http://www.w3.org/2002/07/owl#rational">
-  <owl:equivalentClass rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</rdf:Description>
-
 <rdf:Description rdf:about="#OWLNamedIndividual_e91979a1_5fa1_479e_b390_093624ad927c">
   <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
   <rdfs:label xml:lang="ru">Testik</rdfs:label>
@@ -43,6 +39,5 @@
   <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">x = 10
 print(x)</ExText>
 </rdf:Description>
-
 
 </rdf:RDF>

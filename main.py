@@ -127,6 +127,8 @@ def save_onto_ex_as():
             onto_worker.save_onto_ex(custom_file=filename)
             # with open(filename, 'w') as file:
             #     file.write("Welcome to GeeksCoders.com")
+    else:
+        print('Сначала загрузите онтологию примеров')
 
         # name = QFileDialog.getSaveFileName(self, 'Save File')
         # file = open(name, 'w')
@@ -144,7 +146,6 @@ class MyDialog(QFileDialog):
 
 
 def extend_ontology_json():
-    global CONST_EXAMPLES
     if not CONST_EXAMPLES:
         print('Ошибка: сначала загрузите примеры!')
         return

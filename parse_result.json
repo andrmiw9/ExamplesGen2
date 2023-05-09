@@ -1,0 +1,93 @@
+{
+    "Python_Datatypes": {
+        "Python_int": "x = 20\ny = 45\n\nprint(x)\nprint(y)",
+        "Python_float": "x = 20.85669842\ny = -0.0000000008566945\nprint(x)\nprint(y)",
+        "Python_complex": "cn = complex(5,6)\nprint(cn)\n\ncn = 5 + 6j\nprint(cn)",
+        "Python_bytes": "bytesObj = b'52s3a6'\n\nfor byte in bytesObj:\n    print(byte)",
+        "Python_string": "greeting = 'hello world!'\nprint(type(greeting))"
+    },
+    "Console_Operations": {
+        "Python__Print_to_Console_Output": "print('Hello World')",
+        "Python__Read_String_from_Console": "#read string from user\nfirstName = input('Enter your first name: ')\n\nprint('Hello',firstName)",
+        "Python__Read_Number_from_Console": "#read integer from user\nn1 = int(input('Enter a number: '))\nn2 = int(input('Enter another number: '))\n\nprint('The sum of two numbers is:', n1+n2)"
+    },
+    "Conditional_Statements": {
+        "Python_If_Example": "a = 2\nb = 5\n\nif a<b:\n    print(a, 'is less than', b)",
+        "Python_If_Else_Example": "a = 2\nb = 4\n\nif a<b:\n     print(a, 'is less than', b)\nelse:\n     print(a, 'is not less than', b)",
+        "Python_Elif_Example": "a = 6\nb = 4\n\nif a<b:\n    print(a, 'is less than', b)\nelif a>b:\n    print(a, 'is greater than', b)\nelse:\n    print(a, 'equals', b)",
+        "Python_if_and": "a = 5\nb = 2\n\n#nested if\nif a==5:\n     if b>0:\n          print('a is 5 and',b,'is greater than zero.')\n          \n#or you can combine the conditions as\nif a==5 and b>0:\n     print('a is 5 and',b,'is greater than zero.')",
+        "Python_if_or": "today = 'Saturday'\n\nif today=='Sunday' or today=='Saturday':\n     print('Today is off. Rest at home.')",
+        "Python_if_not": "a = False\n\nif not a:\n     print('a is false.')"
+    },
+    "Python_Looping_Statements": {
+        "Python_For_Loop": "for i in range(25,29):\n     print(i)",
+        "Python_for_i_in_range": "for i in range(5):\n    print(i)",
+        "Python_Range": "for r in range(5):\n    print(r)",
+        "Python_While_Loop": "n = 4\ni = 1\nwhile i <= n:\n     print(i)\n     i+=1"
+    },
+    "Python_Enumeration": {
+        "Python_Enum_Example": "myList = ['apple', 'banana', 'cherry']\n\nfor index, item in enumerate(myList):\n    print(index, item)"
+    },
+    "Python_Type_Conversion": {
+        "Python_Convert_Int_to_Float": "#take an integer\na = 5\nprint('Intput', a, type(a), sep='\\n')\n\n#convert integer to float\noutput = float(a)\nprint('\\nOutput', output, type(output), sep='\\n')",
+        "Python_Convert_Int_to_Complex_Number": "https://pythonexamples.org/python-convert-int-to-complex/",
+        "Python_Convert_Int_to_String": "#take an int\na = 5\nprint('Input', a, type(a), sep='\\n')\n\n#convert int to string\noutput = str(a)\nprint('\\nOutput', output, type(output), sep='\\n')",
+        "Python_Convert_Bytes_to_String": "bytesObj = b'52s3a6'\nstring = bytesObj.decode('utf-8')\nprint(string)",
+        "Python_Convert_String_to_Int": "#take a string\na = '125'\nprint('Input', a, type(a), sep='\\n')\n\n#convert string to int\noutput = int(a)\nprint('\\nOutput', output, type(output), sep='\\n')"
+    },
+    "Python_Operators": {
+        "Python_Arithmetic_Operators": {
+            "Python_Addition": "a = 10\nb = 12\n\nc = a + b\n\nprint(c)",
+            "Python_Subtraction": "a = 20\nb = 12\n\nresult = a - b\n\nprint(result)",
+            "Python_Multiplication": "a = 10\nb = 12\n\nresult = a * b\n\nprint(result)",
+            "Python_Division": "a, b = 7, 3\nresult = a//b\nprint(result)"
+        },
+        "Python_Comparison_Operators": {
+            "Python_Equal_to": "a = 10\nb = 12\nc = 12\n\nprint(a == b)\nprint(b == c)",
+            "Python_Not_Equal_to": "a = 10\nb = 12\nc = 12\n\nprint(a != b)\nprint(b != c)",
+            "Python_Less_than": "x = 5\ny = 12\nresult = x < y\nprint(result) #True\n\nx = 8\ny = 7\nresult = x < y\nprint(result) #False",
+            "Python_Greater_than": "x = 8\ny = 7\nresult = x > y\nprint(result) #True\n\nx = 5\ny = 12\nresult = x > y\nprint(result) #False",
+            "Python_Less_than_or_Equal_to": "x = 5\ny = 12\nresult = x <= y\nprint(result) #True\n\nx = 8\ny = 8\nresult = x <= y\nprint(result) #True\n\nx = 78\ny = 8\nresult = x <= y\nprint(result) #False",
+            "Python_Greater_than_or_Equal_to": "x = 57\ny = 12\nresult = x >= y\nprint(result) #True\n\nx = 8\ny = 8\nresult = x >= y\nprint(result) #True\n\nx = 78\ny = 89\nresult = x >= y\nprint(result) #False"
+        },
+        "Python_Logical_Operators": {
+            "Python_logical_and_operator": "#True and True\na = True\nb = True\n\nc = a and b\nprint(a,'and',b,'is:',c)\n\n#True and False\na = True\nb = False\n\nc = a and b\nprint(a,'and',b,'is:',c)\n\n#False and True\na = False\nb = True\n\nc = a and b\nprint(a,'and',b,'is:',c)\n\n#False and False\na = False\nb = False\n\nc = a and b\nprint(a,'and',b,'is:',c)",
+            "Python_logical_or_operator": "#True or True\na = True\nb = True\n\nc = a or b\nprint(a,'or',b,'is:',c)\n\n#True or False\na = True\nb = False\n\nc = a or b\nprint(a,'or',b,'is:',c)\n\n#False or True\na = False\nb = True\n\nc = a or b\nprint(a,'or',b,'is:',c)\n\n#False or False\na = False\nb = False\n\nc = a or b\nprint(a,'or',b,'is:',c)",
+            "Python_logical_not_operator": "#not True\na = True\nc = not a\nprint('not',a,'is:',c)\n\n#not False\na = False\nc = not a\nprint('not',a,'is:',c)"
+        },
+        "Python_Identity_Operators": {
+            "Python_is_Operator": "a = [5, 8]\nb = [5, 8]\nc = a\n\nif a is b:\n     print('a is b')\nelse:\n     print('a is not b')\n\nif a is c:\n     print('a is c')\nelse:\n     print('a is not c')",
+            "Python_is_not_Operator": "a = [5, 8]\nb = [5, 8]\nc = a\n\nif a is not b:\n     print('a is not b')\nelse:\n     print('a is b')\n\nif a is not c:\n     print('a is not c')\nelse:\n     print('a is c')"
+        },
+        "Python_Bitwise_Operators": {}
+    },
+    "Python_Classes_and_Objects": {
+        "Python_Classes_and_Objects_": "class Laptop:\n     name = 'My Laptop'\n     processor = 'Intel Core'\n     \n     @staticmethod\n     def start():\n          print('Laptop is starting..')\n          \n     @staticmethod\n     def restart(self):\n          print('Laptop is restarting')\n          \n     def details(self):\n          print('My laptop name is:', self.name)\n          print('It has',self.processor,'processor.')",
+        "Python___init___function": "class Laptop:\n     \n     def __init__(self, name, processor, hdd, ram, cost):\n          self.name = name\n          self.processor = processor\n          self.hdd = hdd\n          self.ram = ram\n          self.cost = cost\n          \n     def details(self):\n          print('The details of the laptop are:')\n          print('Name         :', self.name)\n          print('Processor    :', self.processor)\n          print('HDD Capacity :', self.hdd)\n          print('RAM          :', self.ram)\n          print('Cost($)      :', self.cost)\n          \n#create object\nlaptop1 = Laptop('Dell Alienware', 'Intel Core i7', 512, 8, 2500.00)\n\nprint(laptop1.name)\nprint(laptop1.processor)\n\nlaptop1.details()",
+        "Python__Delete_Specific_Attribute_from_Object": "class A:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n\nA1 = A(2, 3)\n\nprint('Before deleting attribute from object A1')\nresult = hasattr(A1, 'x')\nprint(f'Does A1 has x? {result}')\nresult = hasattr(A1, 'y')\nprint(f'Does A1 has y? {result}')\n\n#delete the attribute x\ndelattr(A1, 'x')\nprint('\\nAfter deleting attribute from object A1')\nresult = hasattr(A1, 'x')\nprint(f'Does A1 has x? {result}')\nresult = hasattr(A1, 'y')\nprint(f'Does A1 has y? {result}')",
+        "Python__Check_if_Object_has_Specific_Attribute": "class A:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n\n\nA1 = A(2, 3)\n\nresult = hasattr(A1, 'x')\nprint(f'Does A1 has x? {result}')\nresult = hasattr(A1, 'z')\nprint(f'Does A1 has z? {result}')"
+    },
+    "Python_Keywords": {
+        "Python_Pass_Statement": "https://pythonexamples.org/python-pass/",
+        "Check_if_the_given_String_is_a_Python_Keyword": "import keyword\n\nif __name__ == '__main__':\n     #read string from user\n     s = input(\"Enter a string: \")\n     #check if the string is a keyword\n     iskey = keyword.iskeyword(s)\n     print('Is',s,'a keyword:',iskey)",
+        "Get_the_list_of_all_Python_Keywords_programmatically": "import keyword\n\nif __name__ == '__main__':\n     #get all keywords\n     keywords = keyword.kwlist\n     #print the keywords\n     for key in keywords:\n          print(key)"
+    },
+    "Python_General_Examples": {
+        "Python__Add_Two_Numbers": "a = 1\nb = 6\n\n# Add two integer numbers\nsum = a + b\n\n# print the sum to console\nprint(sum)",
+        "Python__Generate_a_Random_Number": "import random\n\nrandomnumber = random.randint(10, 152)\nprint(randomnumber)",
+        "Python__Print_until_N": "",
+        "Python__Factorial_Program": "def factorial(n):\n     result = 1\n     for i in range(1,n+1):\n          result = result*i\n     return result\n\nn = int(input('Enter a number: '))\nresult = factorial(n)\nprint(n,'! = ',result,sep=\"\")",
+        "Fibonacci_Series_in_Python_using_For_Loop": "N = int(input(\"Number of elements in Fibonacci Series, N, (N>=2) : \"))\n\n#initialize the list with starting elements: 0, 1\nfibonacciSeries = [0,1]\n\nif N>2:\n     for i in range(2, N):\n          #next elment in series = sum of its previous two numbers\n          nextElement = fibonacciSeries[i-1] + fibonacciSeries[i-2]\n          #append the element to the series\n          fibonacciSeries.append(nextElement)\n\nprint(fibonacciSeries)",
+        "Fibonacci_Series_in_Python_using_Recursion": "def fibonacci(n):\n     if n<=1:\n          return n\n     else:\n          return(fibonacci(n-1) + fibonacci(n-2))\n\nn = int(input('Enter a number, N, N>=2 : '))\n\nfibo_series = []\n\nfor i in range(0,n):\n     fibo_series.append(fibonacci(i))\n     \nprint(fibo_series)",
+        "Reverse_a_Number_in_Python": "try:\n     n = int(input('Enter a number : '))\n     reversed = int(str(n)[::-1])\n     print(reversed)\nexcept ValueError:\n     print('Given input is not a number.')"
+    },
+    "Python_Functions": {
+        "Python__Inner_Functions": "def function():\n    print('Inside function.')\n\n    def innerFunction1():\n        print('Inner function 1.')\n\n    def innerFunction2():\n        print('Inner function 2.')\n\n    innerFunction1()\n    innerFunction2()\n\nfunction()",
+        "Python__Return_Function_from_Function": "def function1():\n    return function2\n\ndef function2():\n    print('Function 2')\n\nx = function1()\nx()",
+        "Python__Return_Tuple_from_Function": "def myFunction():\n    return (1, 'Ram')\n\ntuple1 = myFunction()\n\nprint(tuple1)\nprint(type(tuple1))",
+        "Python__List_of_Functions": "def function1():\n    print('Function 1')\n\ndef function2():\n    print('Function 2')\n\nmyList = [function1, function2]"
+    },
+    "Python_Advanced_Topics": {
+        "Python__py_to_exe": "https://pythonexamples.org/python-py-to-exe/"
+    }
+}

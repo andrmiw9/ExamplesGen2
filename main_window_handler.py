@@ -1,9 +1,11 @@
 # noinspection PyUnresolvedReferences
 from PyQt5 import uic
 from PyQt5.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QDialog, QDialogButtonBox, QMainWindow, QMessageBox, QTreeWidget, QTreeWidgetItem
+from PyQt5.QtWidgets import QAction, QDialog, QDialogButtonBox, QMainWindow, QMenu, QMessageBox, QTreeWidget, \
+    QTreeWidgetItem
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
+from PyQt5.QtCore import Qt
 
 import IconEdit
 from owlready2 import *
@@ -84,7 +86,14 @@ class MainWindow(QMainWindow):
         self.Lang_Text: str = None
         self.start_print: bool = False
         self.last_cur_item = None
-        uic.loadUi('V2Splitter.ui', self)
+        uic.loadUi('V3Splitter.ui', self)
+        # self.Tree_Examples.setContextMenuPolicy(ActionsContextMenu)
+        self.Tree_Examples.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.Tree_Examples.customContextMenuRequested.connect(self.showContextMenu)
+        t = QAction(self.Tree_Examples)
+        t.setText("&amp;New")
+        self.Tree_Examples.newAction = t
+        # self.Tree_Examples.addAction(QAction(self))
 
         # self.Example_Text.setHtml("""print(c)</code></pre> <a class="runonline" target="_blank"
         # href="https://pythonexamples.org/run.php?pgm=a+%3D+10%0Ab+%3D+12%0A%0Ac+%3D+a+%2B+b%0A%0Aprint%28c%29"
@@ -121,6 +130,29 @@ class MainWindow(QMainWindow):
         # self.Tree_Language.itemClicked.connect(self.on_tree_item_clicked)
 
         self.show()
+
+    def showContextMenu(self, pos):
+        # получаем выбранный элемент
+        item = self.Tree_Examples.itemAt(pos)
+        # создаем контекстное меню
+        menu = QMenu(self)
+
+        # создаем пункт меню "Add child"
+        addChildAction = QAction("Добавить дочернюю ноду", self)
+        addChildAction.triggered.connect(lambda: item.addChild(QTreeWidgetItem()))
+
+        # создаем пункт меню "Remove item"
+        removeItemAction = QAction("Remove item", self)
+        removeItemAction.triggered.connect(lambda: item.parent().removeChild(item))
+        # takeChild(0)
+
+        # добавляем пункты меню в контекстное меню
+        menu.addAction(addChildAction)
+        if item is not None:
+            menu.addAction(removeItemAction)
+
+        # показываем контекстное меню в заданной позиции
+        menu.exec_(self.Tree_Examples.mapToGlobal(pos))
 
     def set_ex_onto(self, onto_ex: owlready2.namespace.Ontology):
         self.onto_examples = onto_ex

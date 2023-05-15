@@ -1,7 +1,6 @@
 import string
 
 from owlready2 import *
-from parser_basics import Parser
 import types
 
 
@@ -22,7 +21,7 @@ class OntoWorker:
             self.onto_ex.save(file=custom_file)
             pass
 
-    def update_examples_from_graph(self, mnoshestvo, parent: str = 'Python_Basics') -> bool:
+    def update_examples_from_graph(self, mnoshestvo, parent: str = 'Ontology_Root') -> bool:
         # print('Update examples from graph in work')
         # with self.onto_ex:
         if type(mnoshestvo) == dict:

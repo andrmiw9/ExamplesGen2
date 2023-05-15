@@ -1,7 +1,7 @@
 # noinspection PyUnresolvedReferences
 from PyQt5 import uic
 from PyQt5.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QAction, QDialog, QDialogButtonBox, QMainWindow, QMenu, QMessageBox, QTreeWidget, \
+from PyQt5.QtWidgets import QAction, QDialog, QDialogButtonBox, QLabel, QMainWindow, QMenu, QMessageBox, QTreeWidget, \
     QTreeWidgetItem
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
@@ -76,6 +76,8 @@ class MainWindow(QMainWindow):
         self.Tree_Language = None
         self.Example_Text = None
         self.Tree_Examples = None
+        self.BFind = None
+        self.Line_Find = None
         self.actionExtendEx = None
         self.actionOpen_Right = None
         self.actionOpen = None
@@ -88,50 +90,82 @@ class MainWindow(QMainWindow):
         self.last_cur_item = None
         uic.loadUi('V3Splitter.ui', self)
         # self.Tree_Examples.setContextMenuPolicy(ActionsContextMenu)
+        # noinspection PyUnresolvedReferences
         self.Tree_Examples.setContextMenuPolicy(Qt.CustomContextMenu)
-        self.Tree_Examples.customContextMenuRequested.connect(self.showContextMenu)
+        # noinspection PyUnresolvedReferences
+        self.BFind.clicked.connect(self.find_main)
+        # noinspection PyUnresolvedReferences
+        self.Tree_Examples.customContextMenuRequested.connect(self.show_context_menu)
         t = QAction(self.Tree_Examples)
         t.setText("&amp;New")
         self.Tree_Examples.newAction = t
         # self.Tree_Examples.addAction(QAction(self))
 
-        # self.Example_Text.setHtml("""print(c)</code></pre> <a class="runonline" target="_blank"
-        # href="https://pythonexamples.org/run.php?pgm=a+%3D+10%0Ab+%3D+12%0A%0Ac+%3D+a+%2B+b%0A%0Aprint%28c%29"
-        # rel="noindex"> Run</a> <p><strong>Output</strong></p> <pre class="wp-block-code output"><code
-        # class="language-python">22</code></pre> <a id="4" class="hide"></a> <h3>Chaining of Addition Operator</h3>
-        # <p>You can add more than two numbers in a single statement. This is because, Addition Operator supports
-        # chaining.</p> <p><strong>Python Program</strong></p> <pre class="wp-block-code"><code
-        # class="language-python">a = 10 b = 12 c = 5 d = 63
-        #
-        # result = a + b + c + d
-        #
-        # print(result)</code></pre> <a class="runonline" target="_blank"
-        # href="https://pythonexamples.org/run.php?pgm=a+%3D+10%0Ab+%3D+12%0Ac+%3D+5%0Ad+%3D+63%0A%0Aresult+%3D+a+%2B
-        # +b+%2B+c+%2B+d%0A%0Aprint%28result%29" rel="noindex"> Run</a> <p><strong>Output</strong></p> <pre
-        # class="wp-block-code output"><code class="language-python">90</code></pre> <a id="5" class="hide"></a>
-        # <h3>Example 2: Addition of Floating Point Numbers</h3> <p><a
-        # href="https://pythonexamples.org/python-float/">Float</a> is one of the numeric datatypes. You can compute
-        # the sum of floating point numbers using Python Addition operator. In the following example program,
-        # we shall initialize two floating point numbers, and find their sum.</p> <p><strong>Python
-        # Program</strong></p> <pre class="wp-block-code"><code class="language-python">a = 10.5 b = 12.9
-        #
-        # result = a + b
-        # """)
-        # sf.myWidget.setStyleSheet(“image: url(picture.jpg)”)
-        # self.ui.setupUi(self)
-        # print(s)
-        # s.setupUi(self)
-
-        # print(self.Line_Find.font().setPointSize(72))
-        # font = self.Line_Find.font()  # lineedit current font
-        # font.setPointSize(18)  # change it's size
-        # self.Line_Find.setFont(font)  # set font
-        # self.Tree_Examples.itemClicked.connect(self.on_tree_item_clicked)
-        # self.Tree_Language.itemClicked.connect(self.on_tree_item_clicked)
-
         self.show()
 
-    def showContextMenu(self, pos):
+    # def test(self):
+    #     print('TEST WORKED')
+    #     pass
+
+    def find_main(self):
+        if not self.onto_examples:  # проверяем что онтология примеров загружена
+            print('Загрузите онтологию примеров, чтобы искать в ней!')
+            button = QMessageBox.warning(self, "Предупреждение",
+                                         "Сначала загрузите онтологию примеров, чтобы искать в ней!")
+            return
+        print('find_main')
+        # onto_node = self.onto_examples.search_one(iri=f"*{t}")
+        text = self.Line_Find.text()
+        print(f'text to search: {text}')
+        # print(self.onto_examples.ontology.root)
+        t = self.onto_examples.search(iri=f'*{text}*', subclass_of=self.onto_examples['Ontology_Root'],
+                                      _case_sensitive=False)
+        # subclass_of = 'Ontology_Root'
+        if t:
+            print(t)
+            full_list = []
+            for entry in t:
+                print(entry)
+                print(entry.ancestors())
+                print(type(entry))
+                for en in entry.ancestors():
+                    if en not in full_list:
+                        full_list.append(en)
+
+            print('Full list:', full_list)
+            self.recursive_print_tree_graph_from_list(full_list)
+            # full_list.pop(self.onto_examples['owl.Thing'])
+            # print('Full list:', full_list)
+
+        else:
+            print('Поиск не дал результатов')
+            button = QMessageBox.warning(self, "Предупреждение",
+                                         "Поиск не дал результатов")
+        pass
+
+    def recursive_print_tree_graph_from_list(self, l: list):
+        for k, v in self.graph_ex.items():
+            pass
+        # for k, v in self.graph_ex.items():  # проходимся по всем элементам в словаре
+        #     if isinstance(v, dict):  # если мы нашли вложенный словарь, то вызываем эту же функцию для него рекурсивно
+        #         print_matching_values(v, l)
+        #         continue
+        #     if v in l:  # если значение присутствует в списке, то выводим его на экран
+        #         print(v)
+
+    def enter_node_name(self, item):
+        name, done1 = QtWidgets.QInputDialog.getText(
+            self, 'Диалоговое окно ввода', 'Введите имя для нового узла и класса онтологии:')
+        # lambda: item.addChild(QTreeWidgetItem())
+        print('enter node name')
+        print(item)
+        if done1:
+            q = QTreeWidgetItem()
+            q.setText(0, name)
+            item.addChild(q)
+        pass
+
+    def show_context_menu(self, pos):
         # получаем выбранный элемент
         item = self.Tree_Examples.itemAt(pos)
         # создаем контекстное меню
@@ -139,10 +173,14 @@ class MainWindow(QMainWindow):
 
         # создаем пункт меню "Add child"
         addChildAction = QAction("Добавить дочернюю ноду", self)
-        addChildAction.triggered.connect(lambda: item.addChild(QTreeWidgetItem()))
+        # noinspection PyUnresolvedReferences
+
+        # addChildAction.triggered.connect(lambda: item.addChild(QTreeWidgetItem()))
+        addChildAction.triggered.connect(lambda: self.enter_node_name(item))
 
         # создаем пункт меню "Remove item"
-        removeItemAction = QAction("Remove item", self)
+        removeItemAction = QAction("Удалить выбранную ноду", self)
+        # noinspection PyUnresolvedReferences
         removeItemAction.triggered.connect(lambda: item.parent().removeChild(item))
         # takeChild(0)
 
@@ -210,17 +248,6 @@ class MainWindow(QMainWindow):
                 instansss.ExText = new_example
                 self.onto_examples.save()
                 # r = self.onto_examples.ExText[instansss][0]
-        # self.onto_examples.ExText[instansss]
-
-        # print('TYPE:', type(instansss))
-
-        # if instansss['has_SpecText']:
-        #     r = ontology['SpecText'][instansss][0]
-        #     gui_node.setPlainText(r)
-
-        # print('EPEPPEEPEPEPEPEPp')
-        # self.Example_Text = 'fwafwfawfawf'
-        # print(self.Example_Text)
         else:
             print("Error: No Instances to save to!")
 
@@ -233,9 +260,9 @@ class MainWindow(QMainWindow):
         if self.start_print:  # если были изменения
             msg = QMessageBox()
             msg.setIcon(QMessageBox.Warning)
-            msg.setText("This is a message box")
-            msg.setInformativeText("This is additional information")
-            msg.setWindowTitle("MessageBox demo")
+            msg.setText("У вас есть несохраненные изменения")
+            msg.setInformativeText("Сохранить изменения?")
+            msg.setWindowTitle("Предупреждение")
 
             msg.setStandardButtons(QMessageBox.Save | QMessageBox.Discard | QMessageBox.Cancel)
 
@@ -297,7 +324,3 @@ class MainWindow(QMainWindow):
     #
     #     output = getParent(item, item.text(0))
     #     return output
-
-    # def test(self):
-    #     print('TEST WORKED')
-    #     pass

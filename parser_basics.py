@@ -93,7 +93,7 @@ class Parser:
             self.graph = {}
 
             self.build_graph()
-
+            self.graph = {'Python_Basics': self.graph}
             with open('parse_result.json', 'w') as fp:
                 json.dump(self.graph, fp, indent=4)
 

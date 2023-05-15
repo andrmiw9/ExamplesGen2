@@ -22,14 +22,10 @@
 </owl:DatatypeProperty>
 
 <owl:Class rdf:about="#Ontology_Root">
-  <owl:disjointWith rdf:resource="#sib1"/>
 </owl:Class>
-
-<owl:Class rdf:about="#sib1"/>
 
 <owl:Class rdf:about="#Python_Basics">
   <rdfs:subClassOf rdf:resource="#Ontology_Root"/>
-  <rdfs:label xml:lang="ru">Python Basics</rdfs:label>
 </owl:Class>
 
 <owl:Class rdf:about="#Python_Datatypes">
@@ -564,10 +560,7 @@ print(string)</ExText>
   <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#take a string
 a = '125'
 print('Input', a, type(a), sep='\n')
-
-#convert string to int
-output = int(a)
-print('\nOutputs', output, type(output), sep='\n')</ExText>
+print('TEST CHANGING EXAMPLE 1")</ExText>
 </Python_Convert_String_to_Int>
 
 <Python_Addition rdf:about="#python_addition1">

@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QAction, QDialog, QDialogButtonBox, QLabel, QMainWin
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
+import copy
 
 import IconEdit
 from owlready2 import *
@@ -70,6 +71,7 @@ class MainWindow(QMainWindow):
 
         # self.ui = QTMainW()
 
+        self.was_search = False
         self.action_SaveAs = None
         self.action_SaveEx = None
         self.Language_Text = None
@@ -113,6 +115,13 @@ class MainWindow(QMainWindow):
             button = QMessageBox.warning(self, "Предупреждение",
                                          "Сначала загрузите онтологию примеров, чтобы искать в ней!")
             return
+
+        if self.was_search:  # значит нажата кнопка отмены
+            self.BFind.setText('Найти')
+            self.print_tree_from_graph(self.Tree_Examples, self.graph_ex)
+            self.Line_Find.clear()
+            return
+
         print('find_main')
         # onto_node = self.onto_examples.search_one(iri=f"*{t}")
         text = self.Line_Find.text()
@@ -132,10 +141,22 @@ class MainWindow(QMainWindow):
                     if en not in full_list:
                         full_list.append(en)
 
+            full_list = [(str(i).split('.')[1]) for i in full_list]
             print('Full list:', full_list)
-            self.recursive_print_tree_graph_from_list(full_list)
+            # self.recursive_print_tree_graph_from_list(full_list)
+            # self.get_graph_ex_from_list(full_list)
+            print('DO', self.graph_ex)
+            # d = self.graph_ex.copy()
+            d = copy.deepcopy(self.graph_ex)
+            self.filter_dict_by_list(d, full_list)
+            print("POSLE", d)
+            print('POSLE_graphex', self.graph_ex)
+            self.print_tree_from_graph(self.Tree_Examples, d)
             # full_list.pop(self.onto_examples['owl.Thing'])
             # print('Full list:', full_list)
+
+            self.BFind.setText('Отмена')
+            self.was_search = True
 
         else:
             print('Поиск не дал результатов')
@@ -143,15 +164,23 @@ class MainWindow(QMainWindow):
                                          "Поиск не дал результатов")
         pass
 
-    def recursive_print_tree_graph_from_list(self, l: list):
-        for k, v in self.graph_ex.items():
-            pass
-        # for k, v in self.graph_ex.items():  # проходимся по всем элементам в словаре
-        #     if isinstance(v, dict):  # если мы нашли вложенный словарь, то вызываем эту же функцию для него рекурсивно
-        #         print_matching_values(v, l)
-        #         continue
-        #     if v in l:  # если значение присутствует в списке, то выводим его на экран
-        #         print(v)
+    def filter_dict_by_list(self, data, lst):
+        if type(data) == dict and bool(data):  # словарь и непустой
+            for key in list(data):
+                if isinstance(data[key], dict):  # если это вложенный словарь, вызываем эту же функцию для него
+                    self.filter_dict_by_list(data[key], lst)
+                elif isinstance(data[key], list):  # если это список, вызываем эту же функцию для списка
+                    self.filter_dict_by_list(data[key], lst)
+                else:  # это строка, ничего не делаем
+                    pass
+
+            # удаляем из словаря ключи, которых нет в списке
+            for key in list(data):
+                if isinstance(data[key], dict) and bool(
+                        data[key]):  # если это вложенный непустой словарь, ничего не делаем
+                    pass
+                elif key not in lst:  # если ключ отсутствует в списке, удаляем его из словаря
+                    del data[key]
 
     def enter_node_name(self, item):
         name, done1 = QtWidgets.QInputDialog.getText(

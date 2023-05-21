@@ -3,14 +3,12 @@ from PyQt5.QtGui import QKeySequence
 # pyrcc5 IconEdit.qrc -o IconEdit.py
 
 from owlready2 import *
-# from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 import sys
 import json
 
 from ontologies_work import OntoWorker
-from main_window_handler import MainWindow
-from parser_basics import Parser
+from main_window_handler import MainWindow, MyDialog
 
 CONST_EXAMPLES: bool = False
 CONST_LANGUAGE: bool = False
@@ -119,6 +117,8 @@ def save_onto_ex():
         onto_worker.save_onto_ex()
     else:
         print('Сначала загрузите онтологию примеров, чтобы сохранять в неё же')
+        button = QMessageBox.warning(gui, "Предупреждение",
+                                     "Сначала загрузите онтологию примеров")
 
 
 def save_onto_ex_as():
@@ -131,6 +131,8 @@ def save_onto_ex_as():
             #     file.write("Welcome to GeeksCoders.com")
     else:
         print('Сначала загрузите онтологию примеров')
+        button = QMessageBox.warning(gui, "Предупреждение",
+                                     "Сначала загрузите онтологию примеров")
 
         # name = QFileDialog.getSaveFileName(self, 'Save File')
         # file = open(name, 'w')
@@ -139,17 +141,11 @@ def save_onto_ex_as():
         # file.close()
 
 
-class MyDialog(QFileDialog):
-    def __init__(self, parent):
-        super(MyDialog, self).__init__(parent)
-        self.setFileMode(QFileDialog.ExistingFile)
-        self.setNameFilter("Ontology (*.owl)")
-        self.setViewMode(QFileDialog.List)
-
-
 def extend_ontology_json():
     if not CONST_EXAMPLES:
         print('Ошибка: сначала загрузите примеры!')
+        button = QMessageBox.warning(gui, "Предупреждение",
+                                     "Сначала загрузите онтологию примеров")
         return
 
     print('extender')

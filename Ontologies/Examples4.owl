@@ -21,8 +21,7 @@
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
 </owl:DatatypeProperty>
 
-<owl:Class rdf:about="#Ontology_Root">
-</owl:Class>
+<owl:Class rdf:about="#Ontology_Root"/>
 
 <owl:Class rdf:about="#Python_Basics">
   <rdfs:subClassOf rdf:resource="#Ontology_Root"/>
@@ -560,7 +559,7 @@ print(string)</ExText>
   <ExText rdf:datatype="http://www.w3.org/2001/XMLSchema#string">#take a string
 a = '125'
 print('Input', a, type(a), sep='\n')
-print('TEST CHANGING EXAMPLE 1")</ExText>
+print('TEST CHANGING EXAMPLE TEST")</ExText>
 </Python_Convert_String_to_Int>
 
 <Python_Addition rdf:about="#python_addition1">

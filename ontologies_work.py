@@ -123,7 +123,7 @@ class OntoWorker:
     #     print('\n\n')
     #     pass
 
-    def get_onto_ex(self, path: string = "file://Ontologies/First.owl"):
+    def get_onto_ex(self, path: str = "file://Ontologies/First.owl"):
         # print(path)
         # path = path.removesuffix('First.owl')
         folder = path[:path.rfind('/') + 1]
@@ -142,7 +142,7 @@ class OntoWorker:
         # self.update_ontoex_from_parse()
         return self.onto_ex
 
-    def get_onto_lang(self, path: string = "file://Ontologies/Language.owl"):
+    def get_onto_lang(self, path: str = "file://Ontologies/Language.owl"):
         folder = path[:path.rfind('/') + 1]
         print(folder)
         onto_path.append(folder)

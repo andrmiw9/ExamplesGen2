@@ -1,8 +1,8 @@
 # noinspection PyUnresolvedReferences
 from PyQt5 import uic
 from PyQt5.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QAction, QDialog, QDialogButtonBox, QLabel, QMainWindow, QMenu, QMessageBox, QTreeWidget, \
-    QTreeWidgetItem
+from PyQt5.QtWidgets import QAction, QDialog, QDialogButtonBox, QFileDialog, QLabel, QMainWindow, QMenu, QMessageBox, \
+    QTreeWidget, QTreeWidgetItem
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
@@ -31,7 +31,8 @@ def print_universal(currentItem, ontology, gui_node, switcher):
             if switcher == 1:
                 if instansss.has_SpecText:
                     # r = ontology.SpecText[instansss][0]
-                    gui_node.setPlainText(instansss.SpecText)
+                    # gui_node.setPlainText(instansss.SpecText)
+                    gui_node.setHtml(instansss.SpecText)
             else:
                 if instansss.has_ExText:
                     # r = ontology.ExText[instansss][0]
@@ -50,6 +51,14 @@ def print_universal(currentItem, ontology, gui_node, switcher):
         print("No Instances!")
 
 
+class MyDialog(QFileDialog):
+    def __init__(self, parent):
+        super(MyDialog, self).__init__(parent)
+        self.setFileMode(QFileDialog.ExistingFile)
+        self.setNameFilter("Ontology (*.owl)")
+        self.setViewMode(QFileDialog.List)
+
+
 class MainWindow(QMainWindow):
     """
       Does GUI updates. Builds graph and displays it.
@@ -59,7 +68,6 @@ class MainWindow(QMainWindow):
     # TODO:
     #  1) refactor methods using decorators
     #  2) Advanced Topics need fix
-    #  3) Add filters for file extensions when opening files
     #  4) Integrate 2 methods of loading files into one or smth
     #  5) Move Dialog classes from main to another file
     #  6) When writing graph, try replace underlines with whitespaces
@@ -87,10 +95,9 @@ class MainWindow(QMainWindow):
         self.graph_lang: dict = None
         self.onto_examples: owlready2.namespace.Ontology = None
         self.onto_lang: owlready2.namespace.Ontology = None
-        self.Lang_Text: str = None
         self.start_print: bool = False
         self.last_cur_item = None
-        uic.loadUi('V3Splitter.ui', self)
+        uic.loadUi('V4Splitter.ui', self)
         # self.Tree_Examples.setContextMenuPolicy(ActionsContextMenu)
         # noinspection PyUnresolvedReferences
         self.Tree_Examples.setContextMenuPolicy(Qt.CustomContextMenu)
@@ -120,6 +127,7 @@ class MainWindow(QMainWindow):
             self.BFind.setText('Найти')
             self.print_tree_from_graph(self.Tree_Examples, self.graph_ex)
             self.Line_Find.clear()
+            self.was_search = False
             return
 
         print('find_main')
@@ -331,7 +339,7 @@ class MainWindow(QMainWindow):
         # print(self.text_ch_counter)
 
     def print_language(self, currentItem):
-        print_universal(currentItem, self.onto_lang, self.Lang_Text, 1)
+        print_universal(currentItem, self.onto_lang, self.Language_Text, 1)
 
     # def on_tree_item_clicked(self, Tree: QTreeWidget):
     #     item = self.Tree_Examples.currentItem()
